@@ -237,8 +237,17 @@ var userProfilePicStorage = multer.diskStorage({
 var userProfilePicUpload = multer({storage: userProfilePicStorage, limits: { fileSize: 1024*1024 }});
 
 app.post('/api/user/upload-avatar', userProfilePicUpload.single('avatar'), function (req, res) {
-    console.log("avatar successfully uploaded");
-    res.send(req.file);
+    db.userCollection().updateOne({_id: new ObjectID(req.user._id)}
+        , {$set: {avatar: '/pictures/avatars/' + req.file.filename}
+        }, function (err, result) {
+            if(!err){
+                console.log("avatar successfully updated");
+                res.send(req.file);
+            } else {
+                console.log(err);
+                res.status(500).send();
+            }
+        });
 });
 
 var postPicStorage = multer.diskStorage({
@@ -246,7 +255,7 @@ var postPicStorage = multer.diskStorage({
         cb(null, 'pictures/posts/')
     },
     filename: function (req, file, cb) {
-        cb(null, req.user._id + file.originalname.substr(file.originalname.lastIndexOf('.')))
+        cb(null, Date.now() + file.originalname.substr(file.originalname.lastIndexOf('.')));
     }
 });
 
