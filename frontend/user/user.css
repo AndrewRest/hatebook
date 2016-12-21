@@ -28,7 +28,9 @@ header {
     .container-grid .left-panel .po-like a {
       cursor: pointer; }
     .container-grid .left-panel .po-like img {
-      width: 15%; }
+      width: 15%;
+    }
+
   .container-grid .right-panel {
     margin-left: 3.5%;
     height: 500px;
@@ -36,6 +38,36 @@ header {
     text-align: center; }
     .container-grid .right-panel .user-info {
       text-align: center;
-      margin-top: 20px; }
+      margin-top: 20px;
+    }
 
+.enemies-table{
+  border:solid black 1px;
+}
+.enemies-table .row {
+  border:solid black 1px;
+}
+.enemies {
+  height:105px;
+  padding:12px 0
+
+}
+.image-user{
+  width:80px;
+  height:80px;
+  border:solid black 1px;
+  margin-left:12px;
+  float:left;
+}
+.info-haters{
+  float:left;
+  margin-left: 120px;
+}
+.get-poo {
+  float:right;
+}
+.get-poo img{
+  width:80px;
+  height:80px
+}
 /*# sourceMappingURL=user.css.map */

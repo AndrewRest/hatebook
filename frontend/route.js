@@ -13,6 +13,10 @@ hateBook.config(['$routeProvider', function( $routeProvider) {
         templateUrl:'/user/user.html',
         controller:'userCtrl'
     });
+    $routeProvider.when('/enemies-list', {
+        templateUrl:'/user/enemies-list.html',
+        controller:'userCtrl'
+    });
     $routeProvider.otherwise({redirectTo: '/login'});
 
 }]);

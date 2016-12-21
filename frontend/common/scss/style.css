@@ -5,5 +5,18 @@ body {
   margin: 0;
   background-color: #f5eee4;
   padding: 0; }
+.avatar img {
+  width: 80%
+}
+@media screen and (min-width:991px){
+  .avatar img {
+    width: 68%
+  }
+  .container-grid .left-panel .avatar{
+    text-align: center;
+    margin-top: 20px;
+    height: 240px !important;
+  }
 
+}
 /*# sourceMappingURL=style.css.map */
