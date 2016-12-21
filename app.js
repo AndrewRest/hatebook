@@ -39,7 +39,7 @@ app.post('/api/signup', function (req, res) {
 });
 
 app.get('/api/user/:id', function (req, res) {
-    db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user){
+    db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user) {
         if(!err){
             console.log("user successfully received");
             res.send(user);
@@ -48,6 +48,8 @@ app.get('/api/user/:id', function (req, res) {
         }
     });
 });
+
+app.get('/api/current-user', authentication.getCurrentUser);
 
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
