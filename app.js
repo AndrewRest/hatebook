@@ -92,7 +92,6 @@ app.get('/api/add-enemy/:id', function(req, res) {
 
 app.get('/api/enemies', function(req, res) {
     var enemies = req.user.enemies;
-    console.log(enemies);
     if(!enemies) {
         res.json([]);
         return;
