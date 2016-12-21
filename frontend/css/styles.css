@@ -16,7 +16,7 @@ body {
     padding: 3px 45px;
     background-color:#f7f6f6;
     border: 2px solid #d0d0d0;
-    height: 500px;
+    height: 300px;
 }
 .login-tab{
 }
@@ -28,5 +28,26 @@ body {
     margin-top: 5em;
     font-size: 32px;
     color: #3c92c8;
+    text-align:center
+}
+.title{
+    font-weight: 400;
+    text-align: left;
+    color: #a2a2a2;
+    font-size: 18px;
+    padding:18px 0 6px 0;
+}
+ input.contact{
+     font-size: 18px;
+     width: 100%;
+     height: 45px;
+ }
+ button.login-btn{
+    width:100%;
+     height: 45px;
+     font-size: 18px ;
+     margin-top: 31px;
+ }
+.account-content{
     text-align:center
 }

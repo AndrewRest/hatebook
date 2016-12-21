@@ -1,9 +1,24 @@
 header {
   background-color: #fff;
-  text-align: center; }
+  text-align: center;
+  border-bottom: 1px solid #9F9A9A; }
   header .logo-header img {
     width: 100px; }
   header .logo-header h3 {
-    margin-top: 0; }
+    font-family: 'Comic Sans MS'; }
+
+.container .left-panel {
+  height: 500px;
+  border-right: 1px solid #9F9A9A; }
+  .container .left-panel .name {
+    text-align: center;
+    margin-top: 20px; }
+  .container .left-panel .enemy {
+    text-align: center;
+    margin-top: 20px; }
+  .container .left-panel .avatar {
+    margin-top: 20px;
+    border: 1px solid #9F9A9A;
+    height: 300px; }
 
 /*# sourceMappingURL=user.css.map */
