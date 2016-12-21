@@ -110,6 +110,17 @@ app.post('/api/post/poo', function (req, res) {
         });
 });
 
+app.get('/api/user/posts/:userId', function (req, res) {
+    db.postCollection().find({userId:req.params.userId}).toArray(function(err, docs) {
+        if(!err){
+            console.log("posts successfully received");
+            res.send(docs);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
