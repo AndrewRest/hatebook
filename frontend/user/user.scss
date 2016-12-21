@@ -1,7 +1,6 @@
 
 header {
   background-color: #f5eee4;
-  border-bottom: 1px solid #9F9A9A;
   .logo-header {
     img {
       width: 200px;
@@ -22,7 +21,7 @@ header {
   padding-left: 15%;
   .left-panel {
     height: 500px;
-    border-right: 1px solid #9F9A9A;
+    background-color: #fff;
     .name, .enemy, .not-enemies, .enemies-count{
       text-align: center;
       margin-top: 20px;
@@ -30,7 +29,6 @@ header {
     .avatar {
       text-align: center;
       margin-top: 20px;
-      border: 1px solid #9F9A9A;
       height: 300px;
       @media(max-width: 991px) {
         height: 200px;
@@ -46,6 +44,9 @@ header {
     }
   }
   .right-panel {
+    margin-left: 3.5%;
+    height: 500px;
+    background-color: #fff;
     text-align: center;
     .user-info{
       text-align: center;
