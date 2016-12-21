@@ -91,6 +91,25 @@ app.post('/api/user/poo', function (req, res) {
         });
 });
 
+app.post('/api/post/poo', function (req, res) {
+    db.postCollection().updateOne({_id: new ObjectID(req.body.postId)}
+        , {$inc: {pooCount: 1}}, function (err, result) {
+            if (!err) {
+                console.log("poo count successfully updated");
+                db.postCollection().findOne({_id: new ObjectID(req.body.postId)}, function (err, post) {
+                    if (!err) {
+                        console.log("post poo count received");
+                        res.send({_id: post._id,pooCount: post.pooCount});
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                console.log(err);
+            }
+        });
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
