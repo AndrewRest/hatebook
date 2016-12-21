@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
+var multer  = require('multer');
+var upload = multer({ dest: 'avatars/' });
 
 var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
@@ -20,6 +22,7 @@ var sessionConfig = {
 };
 
 app.use(express.static('frontend'));
+app.use(express.static('avatars'));
 app.use('/api', bodyParser.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
@@ -211,6 +214,11 @@ app.put('/api/user/update-info', function (req, res) {
                 console.log(err);
             }
         });
+});
+
+app.post('/api/user/upload-avatar', upload.single('avatar'), function (req, res) {
+    console.log(req.file);
+    res.send(req.file);
 });
 
 app.listen(app.get('port'), function () {
