@@ -5,6 +5,10 @@ hateBook.config(['$routeProvider', function( $routeProvider) {
         templateUrl:'/login/login.html',
         controller:'loginCtrl'
     })
+        .when('/user/', {
+            templateUrl:'/user/user.html',
+            controller:'userCtrl'
+        })
 
 
 }]);
