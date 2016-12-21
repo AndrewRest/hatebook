@@ -7,6 +7,14 @@ var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
 
+var api_key = process.env.MAIL_API_KEY;
+var domain = 'mifort.org';
+var mailgun;
+if(process.env.MAIL_API_KEY) {
+    mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+}
+
+var cron = require('node-cron');
 //just to not stop after error
 var logger = require('./backend/lib/logger');
 var authentication = require('./backend/lib/authentication');
@@ -36,16 +44,30 @@ app.post('/api/signup', function (req, res) {
         email: req.body.email,
         password: req.body.password,
         pooCount: 0,
+        pooCredits: 10,
         avatar: '/pictures/default-user-avatar.png'
     }, function (err, result) {
         if (!err) {
             console.log("user successfully registered");
             res.send(result.ops[0]);
+            sendNotification({to: req.body.email,
+                              subject: "Let's throw poop online",
+                              text: "Hi! Go to our resource and start to fun."});
         } else {
             console.log(err);
             res.status(500).send();
         }
     })
+});
+
+cron.schedule('* */24 * * *', function () {
+    db.userCollection().update({}, {$inc: {pooCredits: 10}},{multi: true}, function (err, result) {
+            if (!err) {
+                console.log("poo credits for all users updated");
+            } else {
+                console.log(err);
+            }
+        });
 });
 
 app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res) {
@@ -169,23 +191,27 @@ app.get('/api/enemy-counter', authentication.ensureAuthenticated, function(req, 
 });
 
 app.post('/api/user/poo', authentication.ensureAuthenticated, function (req, res) {
-    db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
-        , {$inc: {pooCount: 1}}, function (err, result) {
-            if (!err) {
-                console.log("poo count successfully updated");
-                db.userCollection().findOne({_id: new ObjectID(req.body.userId)}, function (err, user) {
-                    if (!err) {
-                        console.log("user poo count received");
-                        res.send({_id: user._id,pooCount: user.pooCount});
-                    } else {
-                        console.log(err);
-                        res.status(503).send();
-                    }
-                });
-            } else {
-                console.log(err);
-            }
-        });
+    if(req.user.pooCredits > 0){
+        db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
+            , {$inc: {pooCount: 1}}, function (err, result) {
+                if (!err) {
+                    db.userCollection().updateOne({_id: new ObjectID(req.user._id)}
+                        , {$inc: {pooCredits: -1}}, function (err, result) {
+                            if (!err) {
+                                res.send({message: "poo count successfully updated"});
+                                console.log("poo count successfully updated");
+                            } else {
+                                console.log(err);
+                            }
+                        });
+                } else {
+                    console.log(err);
+                }
+            });
+    } else {
+        console.log("You don't have a poo credits!");
+        res.send({error: "You don't have a poo credits!"})
+    }
 });
 
 app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res) {
@@ -284,3 +310,21 @@ app.post('/api/post/upload-image', authentication.ensureAuthenticated,
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
+
+function sendNotification(message) {
+    if(!process.env.MAIL_API_KEY){
+        console.log('Cannot send email');
+        return;
+    }
+
+    var data = {
+        from: 'Hate You <hatebook@mifort.org>',
+        to: message.to,
+        subject: message.subject,
+        text: message.text
+    };
+
+    mailgun.messages().send(data, function (error, body) {
+        console.log('Message is sent successfully!');
+    });
+}
