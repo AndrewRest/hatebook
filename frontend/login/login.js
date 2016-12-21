@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 angular.module('hatebook.login', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
@@ -11,12 +12,13 @@ angular.module('hatebook.login', ['ngRoute'])
             }
         });
     }])
+*/
 
-    .controller('loginCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'preferences', 'loginService','ngMeta', function($scope, $rootScope, $location, $timeout, preferences, loginService, ngMeta) {
+    hateBook.controller('loginCtrl', ['$scope', '$rootScope',  function($scope, $rootScope) {
         console.log('afdsafasd');
-    }])
+    }]);
 
-    .factory('loginService',
+    /*.factory('loginService',
         ['$http', function($http) {
             return {
                 login: function(user, url) {
@@ -27,4 +29,4 @@ angular.module('hatebook.login', ['ngRoute'])
 
             };
         }
-        ]);
+        ]);*/
