@@ -1,13 +1,11 @@
 header {
-  background-color: #fff;
+  background-color: #f5eee4;
   border-bottom: 1px solid #9F9A9A; }
   header .logo-header img {
     width: 200px; }
   header .logo-header h3 {
     font-family: 'Comic Sans MS'; }
   header .right-header {
-    position: relative;
-    top: -10px;
     text-align: right; }
     header .right-header .enemies-btn {
       margin-right: 20px; }
