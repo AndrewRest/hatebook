@@ -13,12 +13,16 @@ header {
   }
   .right-header {
     text-align: right;
+    .dropbox {
+      position: relative;
+    }
     .enemies-btn {
       margin-right: 20px;
     }
   }
 }
 .container-grid {
+  margin-left: 12%;
   padding-right: 15%;
   padding-left: 15%;
   .left-panel {
