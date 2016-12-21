@@ -231,6 +231,22 @@ app.post('/api/user/upload-avatar', userProfilePicUpload.single('avatar'), funct
     res.send(req.file);
 });
 
+var postPicStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'pictures/posts/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.user._id + file.originalname.substr(file.originalname.lastIndexOf('.')))
+    }
+});
+
+var postPicUpload = multer({storage: postPicStorage, limits: { fileSize: 1024*1024 }});
+
+app.post('/api/post/upload-image', postPicUpload.single('post'), function (req, res) {
+    console.log("attachment successfully uploaded");
+    res.send(req.file);
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
