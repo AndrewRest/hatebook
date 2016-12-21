@@ -8,6 +8,8 @@ exports.findByEmail = function(email, callback) {
     findByExample({email: email.toLowerCase()}, callback);
 };
 
+exports.findByExample = findByExample;
+
 //private
 function findByExample(query, callback) {
     var users = db.userCollection();
