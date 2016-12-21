@@ -72,6 +72,23 @@ app.post('/api/post', function (req, res) {
     })
 });
 
+app.get('/api/add-enemy/:id', function(req, res) {
+    var currentUserId = new ObjectID(req.params.id);
+    var enemyId = new ObjectID(req.params.id);
+    db.userCollection().update(
+        {_id: currentUserId},
+        { $push: { enemies: enemyId }},
+        function(err, updatedUser) {
+            if(err) {
+                console.log('Cannot add enemy to user', currentUserId.toHexString());
+                res.json(err);
+            } else {
+                console.log('Enemy is added', enemyId.toHexString());
+                res.json({msg: "Enemy is added!"});
+            }
+        });
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
