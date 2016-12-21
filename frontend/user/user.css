@@ -1,6 +1,5 @@
 header {
-  background-color: #f5eee4;
-  border-bottom: 1px solid #9F9A9A; }
+  background-color: #f5eee4; }
   header .logo-header img {
     width: 200px; }
   header .logo-header h3 {
@@ -15,14 +14,13 @@ header {
   padding-left: 15%; }
   .container-grid .left-panel {
     height: 500px;
-    border-right: 1px solid #9F9A9A; }
+    background-color: #fff; }
     .container-grid .left-panel .name, .container-grid .left-panel .enemy, .container-grid .left-panel .not-enemies, .container-grid .left-panel .enemies-count {
       text-align: center;
       margin-top: 20px; }
     .container-grid .left-panel .avatar {
       text-align: center;
       margin-top: 20px;
-      border: 1px solid #9F9A9A;
       height: 300px; }
       @media (max-width: 991px) {
         .container-grid .left-panel .avatar {
@@ -32,6 +30,9 @@ header {
     .container-grid .left-panel .po-like img {
       width: 15%; }
   .container-grid .right-panel {
+    margin-left: 3.5%;
+    height: 500px;
+    background-color: #fff;
     text-align: center; }
     .container-grid .right-panel .user-info {
       text-align: center;
