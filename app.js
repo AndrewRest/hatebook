@@ -72,6 +72,24 @@ app.post('/api/post', function (req, res) {
     })
 });
 
+app.get('/api/add-enemy/:id', function(req, res) {
+    var currentUserId = new ObjectID(req.params.id);
+    var enemyId = new ObjectID(req.params.id);
+    db.userCollection().update(
+        {_id: currentUserId},
+        { $push: { enemies: enemyId }},
+        function(err, updatedUser) {
+            if(err) {
+                console.log('Cannot add enemy to user', currentUserId.toHexString());
+                res.json(err);
+            } else {
+                console.log('Enemy is added', enemyId.toHexString());
+                res.json({msg: "Enemy is added!"});
+            }
+        });
+    }
+);
+
 app.post('/api/user/poo', function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
         , {$inc: {pooCount: 1}}, function (err, result) {
