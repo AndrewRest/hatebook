@@ -1,0 +1,28 @@
+<div class="logo">
+    <img src="../common/img/hatebook-logo.png" >
+</div>
+<div>
+    <div class="login-title">
+        <h1>Sign Up</h1>
+    </div>
+    <div class="container login-tab">
+        <div class="row row-content">
+            <div class="login-table ">
+                <form ng-submit="signUp()" class="form-horizontal">
+                    <div>
+                        <label for="email" class="title">Email address</label>
+                        <input placeholder="Email" type="text" id="email" class="form-control contact" ng-model="user.email">
+                    </div>
+                    <div>
+                        <label for="password" class="title">Password</label>
+                        <input placeholder="password" type="text" id="password" class="form-control contact" ng-model="user.password" >
+                    </div>
+
+                    <button  id="submit" name="submit" class="btn btn-primary login-btn">
+                        Log In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
