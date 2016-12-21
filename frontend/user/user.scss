@@ -1,12 +1,32 @@
 header {
   background-color: #fff;
   text-align: center;
+  border-bottom: 1px solid #9F9A9A;
   .logo-header {
     img {
       width: 100px;
     }
     h3 {
-      margin-top: 0;
+      font-family: 'Comic Sans MS';
+    }
+  }
+}
+.container {
+  .left-panel {
+    height: 500px;
+    border-right: 1px solid #9F9A9A;
+    .name {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .enemy {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .avatar {
+      margin-top: 20px;
+      border: 1px solid #9F9A9A;
+      height: 300px;
     }
   }
 }
