@@ -139,6 +139,25 @@ app.get('/api/user/posts/:userId', function (req, res) {
     });
 });
 
+app.put('/api/user/update-info', function (req, res) {
+    db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
+        , {
+            $set: {
+                username: req.body.username,
+                hateMovies: req.body.hateMovies,
+                hateBooks: req.body.hateBooks,
+                iHate: req.body.iHate
+            }
+        }, function (err, result) {
+            if(!err){
+                console.log("user info successfully updated");
+                res.send(result);
+            } else {
+                console.log(err);
+            }
+        });
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
