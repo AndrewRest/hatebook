@@ -45,7 +45,7 @@ app.post('/api/signup', function (req, res) {
         password: req.body.password,
         pooCount: 0,
         pooCredits: 10,
-        avatar: '/pictures/default-user-avatar.png'
+        avatar: '/default-user-avatar.png'
     }, function (err, result) {
         if (!err) {
             console.log("user successfully registered");
@@ -88,7 +88,7 @@ app.get('/api/current-user', authentication.getCurrentUser);
 app.post('/api/post', authentication.ensureAuthenticated, function (req, res) {
     var post = {
         authorName: req.body.authorName,
-        authorAvatar: req.body.authorAvatar || '/pictures/default-user-avatar.png',
+        authorAvatar: req.body.authorAvatar || '/default-user-avatar.png',
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId,
@@ -278,7 +278,7 @@ var userProfilePicUpload = multer({storage: userProfilePicStorage, limits: { fil
 app.post('/api/user/upload-avatar', authentication.ensureAuthenticated,
         userProfilePicUpload.single('avatar'), function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.user._id)}
-        , {$set: {avatar: '/pictures/avatars/' + req.file.filename}
+        , {$set: {avatar: '/avatars/' + req.file.filename}
         }, function (err, result) {
             if(!err){
                 console.log("avatar successfully updated");
@@ -304,7 +304,7 @@ var postPicUpload = multer({storage: postPicStorage, limits: { fileSize: 1024*10
 app.post('/api/post/upload-image', authentication.ensureAuthenticated,
         postPicUpload.single('post'), function (req, res) {
     console.log("attachment successfully uploaded");
-    res.send({picturePath: '/pictures/posts/' + req.file.filename});
+    res.send({picturePath: '/posts/' + req.file.filename});
 });
 
 app.listen(app.get('port'), function () {
