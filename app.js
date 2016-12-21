@@ -263,7 +263,7 @@ var postPicUpload = multer({storage: postPicStorage, limits: { fileSize: 1024*10
 
 app.post('/api/post/upload-image', postPicUpload.single('post'), function (req, res) {
     console.log("attachment successfully uploaded");
-    res.send(req.file);
+    res.send({picturePath: '/pictures/posts/' + req.file.filename});
 });
 
 app.listen(app.get('port'), function () {
