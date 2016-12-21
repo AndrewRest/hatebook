@@ -113,6 +113,8 @@ app.get('/api/not-enemies', function(req, res) {
         res.json([]);
         return;
     }
+    //enemy to your-self
+    enemies.push(req.user._id);
     db.userCollection().find({_id: {$nin : enemies}})
         .toArray(function(err, selectedEnemies) {
             if(err) {
