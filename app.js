@@ -15,3 +15,12 @@ app.use('/api', bodyParser.json());
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
+
+app.post('/api/signup', function (req, res) {
+    db.userCollection().insertMany([{email: req.body.email, password: req.body.password}], function(err, result) {
+        if(!err){
+            console.log("user successfully registered");
+            res.send(result);
+        }
+    })
+});
