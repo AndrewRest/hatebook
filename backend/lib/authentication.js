@@ -8,11 +8,11 @@ var ObjectID = require('mongodb').ObjectID;
 var users = require('../user');
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user._id);
 });
 
 passport.deserializeUser(function(user, done) {
-    users.findById(new ObjectID(user.id), function(error, user) {
+    users.findById(new ObjectID(user._id), function(error, user) {
         if(error) {
             done(err);
         } else {
@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
     function(req, email, password, done) {
         // asynchronous verification, for effect...
         process.nextTick(function () {
-            users.findByEmail({email: email, password: password}, function (err, user) {
+            users.findByExample({email: email, password: password}, function (err, user) {
                 if (err) {
                     return done(err);
                 }
@@ -62,7 +62,7 @@ exports.init = function(app) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.post( '/api/login',
+    app.post('/api/login',
         passport.authenticate('local'),
         function(req, res) {
             res.json({message:'Authenticated!'});

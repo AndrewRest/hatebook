@@ -19,6 +19,7 @@ var sessionConfig = {
 };
 
 app.use(express.static('frontend'));
+app.use('/api', bodyParser.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
 authentication.init(app);
