@@ -6,7 +6,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
-
+var cron = require('node-cron');
 //just to not stop after error
 var logger = require('./backend/lib/logger');
 var authentication = require('./backend/lib/authentication');
@@ -47,6 +47,16 @@ app.post('/api/signup', function (req, res) {
             res.status(500).send();
         }
     })
+});
+
+cron.schedule('* * * * *', function () {
+    db.userCollection().update({}, {$inc: {pooCredits: 10}},{multi: true}, function (err, result) {
+            if (!err) {
+                console.log("poo credits for all users updated");
+            } else {
+                console.log(err);
+            }
+        });
 });
 
 app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res) {
