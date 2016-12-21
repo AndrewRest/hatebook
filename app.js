@@ -6,7 +6,6 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
-var upload = multer({ dest: 'avatars/' });
 
 var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
@@ -216,8 +215,19 @@ app.put('/api/user/update-info', function (req, res) {
         });
 });
 
-app.post('/api/user/upload-avatar', upload.single('avatar'), function (req, res) {
-    console.log(req.file);
+var userProfilePicStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'pictures/avatars/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.user._id + file.originalname.substr(file.originalname.lastIndexOf('.')))
+    }
+});
+
+var userProfilePicUpload = multer({storage: userProfilePicStorage, limits: { fileSize: 1024*1024 }});
+
+app.post('/api/user/upload-avatar', userProfilePicUpload.single('avatar'), function (req, res) {
+    console.log("avatar successfully uploaded");
     res.send(req.file);
 });
 
