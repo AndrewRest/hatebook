@@ -73,7 +73,7 @@ app.post('/api/post', function (req, res) {
 });
 
 app.get('/api/add-enemy/:id', function(req, res) {
-    var currentUserId = new ObjectID(req.params.id);
+    var currentUserId = req.user._id;
     var enemyId = new ObjectID(req.params.id);
     db.userCollection().update(
         {_id: currentUserId},
@@ -90,6 +90,24 @@ app.get('/api/add-enemy/:id', function(req, res) {
     }
 );
 
+app.get('/api/enemies', function(req, res) {
+    var enemies = req.user.enemies;
+    console.log(enemies);
+    if(!enemies) {
+        res.json([]);
+        return;
+    }
+    db.userCollection().find({_id: {$in : enemies}})
+        .toArray(function(err, selectedEnemies) {
+            if(err) {
+                console.log(err);
+                res.status(404).send();
+            } else {
+                res.json(selectedEnemies);
+            }
+        });
+});
+
 app.post('/api/user/poo', function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
         , {$inc: {pooCount: 1}}, function (err, result) {
@@ -101,6 +119,7 @@ app.post('/api/user/poo', function (req, res) {
                         res.send({_id: user._id,pooCount: user.pooCount});
                     } else {
                         console.log(err);
+                        res.status(503).send();
                     }
                 });
             } else {
