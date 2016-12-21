@@ -34,6 +34,7 @@ header {
       cursor: pointer;
       text-decoration: none; }
     .container-grid .left-panel .po-like img {
+
       width: 15%; }
     .container-grid .left-panel .po-like span {
       font-size: 16px; }
@@ -56,6 +57,10 @@ header {
     .container-grid .left-panel .not-enemies-list:hover {
       text-decoration: none;
       background-color: #f5eee4; }
+      width: 15%;
+    }
+
+ ea2f4b662e6796be3f4e14db258389f20bb793b9
   .container-grid .right-panel {
     margin-left: 3.5%;
     background-color: #fff;
@@ -83,5 +88,38 @@ header {
       text-align: right; }
       .container-grid .posts .po-like-posts img {
         width: 9%; }
+      margin-top: 20px;
+    }
+}
 
+.enemies-table{
+  border:solid black 1px;
+}
+.enemies-table .row {
+  border:solid black 1px;
+}
+.enemies {
+  height:105px;
+  padding:12px 0
+>>>>>>> ea2f4b662e6796be3f4e14db258389f20bb793b9
+
+}
+.image-user{
+  width:80px;
+  height:80px;
+  border:solid black 1px;
+  margin-left:12px;
+  float:left;
+}
+.info-haters{
+  float:left;
+  margin-left: 120px;
+}
+.get-poo {
+  float:right;
+}
+.get-poo img{
+  width:80px;
+  height:80px
+}
 /*# sourceMappingURL=user.css.map */
