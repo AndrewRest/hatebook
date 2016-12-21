@@ -155,6 +155,19 @@ app.post('/api/cleanup', function(req, res) {
     );
 });
 
+app.get('/api/enemy-counter', function(req, res){
+    var currentUserId = req.user._id;
+    db.userCollection().find(
+        {enemies: {$all: [currentUserId]}}
+    ).count(function(err, count) {
+        if(err){
+            res.status(500).send();
+        } else {
+            res.json({haters: count});
+        }
+    });
+});
+
 app.post('/api/user/poo', function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
         , {$inc: {pooCount: 1}}, function (err, result) {
