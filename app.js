@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var ObjectID = require('mongodb').ObjectID;
 
 var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
@@ -37,10 +38,10 @@ app.post('/api/signup', function (req, res) {
 });
 
 app.get('/api/user/:id', function (req, res) {
-    db.userCollection().find({_id: ObjectId(req.params.id)}).toArray(function(err, docs) {
+    db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user){
         if(!err){
             console.log("user successfully received");
-            res.send(docs);
+            res.send(user);
         } else {
             console.log(err);
         }
