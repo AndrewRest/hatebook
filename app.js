@@ -21,7 +21,7 @@ var sessionConfig = {
 };
 
 app.use(express.static('frontend'));
-app.use(express.static('avatars'));
+app.use(express.static('pictures'));
 app.use('/api', bodyParser.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
