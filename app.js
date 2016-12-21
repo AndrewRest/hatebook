@@ -42,6 +42,7 @@ app.get('/api/user/:id', function (req, res) {
     db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user) {
         if(!err){
             console.log("user successfully received");
+            delete user.password;
             res.send(user);
         } else {
             console.log(err);
@@ -50,6 +51,26 @@ app.get('/api/user/:id', function (req, res) {
 });
 
 app.get('/api/current-user', authentication.getCurrentUser);
+
+app.post('/api/post', function (req, res) {
+    var post = {
+        authorName: req.body.authorName,
+        authorAvatar: req.body.authorAvatar || 'defaultUserImage.img',
+        title: req.body.title,
+        content: req.body.content,
+        userId: req.body.userId,
+        pooCount: 0,
+        attachment: req.body.attachment || null
+    };
+    db.postCollection().insert(post, function (err, result) {
+        if (!err) {
+            console.log("post successfully added");
+            res.send(result);
+        } else {
+            console.log(err);
+        }
+    })
+});
 
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
