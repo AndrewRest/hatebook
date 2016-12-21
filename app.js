@@ -6,8 +6,9 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
-var upload = multer({ dest: 'avatars/' });
 
+//just to not stop after error
+var logger = require('./backend/lib/logger');
 var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
 
@@ -22,7 +23,7 @@ var sessionConfig = {
 };
 
 app.use(express.static('frontend'));
-app.use(express.static('avatars'));
+app.use(express.static('pictures'));
 app.use('/api', bodyParser.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
@@ -31,12 +32,18 @@ authentication.init(app);
 app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
-    db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
-        if(!err) {
+    db.userCollection().insert({
+        email: req.body.email,
+        password: req.body.password,
+        pooCount: 0,
+        avatar: '/pictures/default-user-avatar.png'
+    }, function (err, result) {
+        if (!err) {
             console.log("user successfully registered");
             res.send(result);
         } else {
             console.log(err);
+            res.status(500).send();
         }
     })
 });
@@ -49,6 +56,7 @@ app.get('/api/user/:id', function (req, res) {
             res.send(user);
         } else {
             console.log(err);
+            res.status(500).send();
         }
     });
 });
@@ -58,7 +66,7 @@ app.get('/api/current-user', authentication.getCurrentUser);
 app.post('/api/post', function (req, res) {
     var post = {
         authorName: req.body.authorName,
-        authorAvatar: req.body.authorAvatar || 'defaultUserImage.img',
+        authorAvatar: req.body.authorAvatar || '/pictures/default-user-avatar.png',
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId,
@@ -212,12 +220,40 @@ app.put('/api/user/update-info', function (req, res) {
                 res.send(result);
             } else {
                 console.log(err);
+                rest.status(500).send();
             }
         });
 });
 
-app.post('/api/user/upload-avatar', upload.single('avatar'), function (req, res) {
-    console.log(req.file);
+var userProfilePicStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'pictures/avatars/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.user._id + file.originalname.substr(file.originalname.lastIndexOf('.')))
+    }
+});
+
+var userProfilePicUpload = multer({storage: userProfilePicStorage, limits: { fileSize: 1024*1024 }});
+
+app.post('/api/user/upload-avatar', userProfilePicUpload.single('avatar'), function (req, res) {
+    console.log("avatar successfully uploaded");
+    res.send(req.file);
+});
+
+var postPicStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'pictures/posts/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.user._id + file.originalname.substr(file.originalname.lastIndexOf('.')))
+    }
+});
+
+var postPicUpload = multer({storage: postPicStorage, limits: { fileSize: 1024*1024 }});
+
+app.post('/api/post/upload-image', postPicUpload.single('post'), function (req, res) {
+    console.log("attachment successfully uploaded");
     res.send(req.file);
 });
 
