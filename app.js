@@ -2,13 +2,26 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
+var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
 
 var app = express();
 app.set('port', 1313);
 
+var sessionConfig = {
+    secret: 'hatebook cat',
+    name: 'kaas',
+    resave: true,
+    saveUninitialized: true
+};
+
 app.use(express.static('frontend'));
+app.use(cookieParser());
+app.use(session(sessionConfig));
+authentication.init(app);
 
 app.use('/api', bodyParser.json());
 
