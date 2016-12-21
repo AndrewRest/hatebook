@@ -60,7 +60,7 @@ app.post('/api/signup', function (req, res) {
     })
 });
 
-cron.schedule('* */24 * * *', function () {
+cron.schedule('0 0 * * *', function () {
     db.userCollection().update({}, {$inc: {pooCredits: 10}},{multi: true}, function (err, result) {
             if (!err) {
                 console.log("poo credits for all users updated");
@@ -209,8 +209,8 @@ app.post('/api/user/poo', authentication.ensureAuthenticated, function (req, res
                 }
             });
     } else {
-        console.log("You don't have a poo credits!");
-        res.send({error: "You don't have a poo credits!"})
+        console.log("You don't have poo credits!");
+        res.send({error: "You don't have poo credits!"})
     }
 });
 
