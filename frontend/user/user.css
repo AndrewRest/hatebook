@@ -8,10 +8,13 @@ header {
     font-family: 'Comic Sans MS'; }
   header .right-header {
     text-align: right; }
+    header .right-header .dropbox {
+      position: relative; }
     header .right-header .enemies-btn {
       margin-right: 20px; }
 
 .container-grid {
+  margin-left: 12%;
   padding-right: 15%;
   padding-left: 15%; }
   .container-grid .left-panel {
