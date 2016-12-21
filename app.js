@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
 
+//just to not stop after error
+var logger = require('./backend/lib/logger');
 var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
 
@@ -36,6 +38,7 @@ app.post('/api/signup', function (req, res) {
             res.send(result);
         } else {
             console.log(err);
+            res.status(500).send();
         }
     })
 });
@@ -48,6 +51,7 @@ app.get('/api/user/:id', function (req, res) {
             res.send(user);
         } else {
             console.log(err);
+            res.status(500).send();
         }
     });
 });
@@ -211,6 +215,7 @@ app.put('/api/user/update-info', function (req, res) {
                 res.send(result);
             } else {
                 console.log(err);
+                rest.status(500).send();
             }
         });
 });
