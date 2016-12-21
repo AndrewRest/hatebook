@@ -32,8 +32,13 @@ authentication.init(app);
 app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
-    db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
-        if(!err) {
+    db.userCollection().insert({
+        email: req.body.email,
+        password: req.body.password,
+        pooCount: 0,
+        avatar: '/pictures/default-user-avatar.png'
+    }, function (err, result) {
+        if (!err) {
             console.log("user successfully registered");
             res.send(result);
         } else {
@@ -61,7 +66,7 @@ app.get('/api/current-user', authentication.getCurrentUser);
 app.post('/api/post', function (req, res) {
     var post = {
         authorName: req.body.authorName,
-        authorAvatar: req.body.authorAvatar || 'defaultUserImage.img',
+        authorAvatar: req.body.authorAvatar || '/pictures/default-user-avatar.png',
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId,
