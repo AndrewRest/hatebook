@@ -1,11 +1,35 @@
 <header class='header'>
-    <img width="150px"  src="../common/img/hatebook-logo.png" />
-    <h3>HATE HATE HATE</h3>
+    <img class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2' width="200px"  src="../common/img/hatebook-logo.png" />
+    <span class="right-header">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Dropdown
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </span>
 </header>
-<div class="container">
+<div class="container-grid">
        <div class='left-panel col-lg-4 col-md-4 col-sm-4 col-xs-4'>
            <div class="name"><h4>Name LastName</h4></div>
            <div class="enemy"><button class="btn btn-danger btn-lg btn-md btn-sm btn-xs">Enemy!</button></div>
-           <div class="avatar"><img src="../../pictures/default-user-avatar.png"/></div>
+           <div class="avatar"><img width='80%' src="../common/img/default-user-avatar.png"/></div>
+           <div class="po-like"><a><img src="../common/img/Poomoji.png"/></a>
+           <span>0</span></div>
+           <div class="not-enemies"><button class="btn btn-danger btn-lg btn-md btn-sm btn-xs">Not Enemies</button></div>
+           <div class="enemies-count">You are enemy for: <span>0</span></div>
        </div>
+        <div class="right-panel col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="user-info"><h4>User Info</h4></div>
+            <div class="hate-movies"></div>
+            <div class="hate-books"></div>
+            <div class="hates"></div>
+        </div>
 </div>

@@ -1,32 +1,56 @@
 header {
   background-color: #fff;
-  text-align: center;
   border-bottom: 1px solid #9F9A9A;
   .logo-header {
     img {
-      width: 100px;
+      width: 200px;
     }
     h3 {
       font-family: 'Comic Sans MS';
     }
   }
+  .right-header {
+    position: relative;
+    top: -10px;
+    text-align: right;
+    .enemies-btn {
+      margin-right: 20px;
+    }
+  }
 }
-.container {
+.container-grid {
+  padding-right: 15%;
+  padding-left: 15%;
   .left-panel {
     height: 500px;
     border-right: 1px solid #9F9A9A;
-    .name {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .enemy {
+    .name, .enemy, .not-enemies, .enemies-count{
       text-align: center;
       margin-top: 20px;
     }
     .avatar {
+      text-align: center;
       margin-top: 20px;
       border: 1px solid #9F9A9A;
       height: 300px;
+      @media(max-width: 991px) {
+        height: 200px;
+      }
+    }
+    .po-like {
+      a {
+        cursor: pointer;
+      }
+      img {
+        width: 15%;
+      }
+    }
+  }
+  .right-panel {
+    text-align: center;
+    .user-info{
+      text-align: center;
+      margin-top: 20px;
     }
   }
 }
