@@ -1,0 +1,19 @@
+{
+  "name": "Hatebook",
+  "private": false,
+  "version": "1.0",
+  "description": "Hatebook",
+  "repository": "https://github.com/AndrewRest/hatebook",
+  "license": "DWEYW",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "paypal-ipn": "^3.0.0"
+  }
+}
