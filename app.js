@@ -48,7 +48,7 @@ app.post('/api/signup', function (req, res) {
     })
 });
 
-app.get('/api/user/:id', function (req, res) {
+app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res) {
     db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user) {
         if(!err){
             console.log("user successfully received");
@@ -63,7 +63,7 @@ app.get('/api/user/:id', function (req, res) {
 
 app.get('/api/current-user', authentication.getCurrentUser);
 
-app.post('/api/post', function (req, res) {
+app.post('/api/post', authentication.ensureAuthenticated, function (req, res) {
     var post = {
         authorName: req.body.authorName,
         authorAvatar: req.body.authorAvatar || '/pictures/default-user-avatar.png',
@@ -83,7 +83,7 @@ app.post('/api/post', function (req, res) {
     })
 });
 
-app.get('/api/add-enemy/:id', function(req, res) {
+app.get('/api/add-enemy/:id', authentication.ensureAuthenticated, function(req, res) {
     var currentUserId = req.user._id;
     var enemyId = new ObjectID(req.params.id);
     db.userCollection().updateOne(
@@ -101,7 +101,7 @@ app.get('/api/add-enemy/:id', function(req, res) {
     }
 );
 
-app.get('/api/enemies', function(req, res) {
+app.get('/api/enemies', authentication.ensureAuthenticated, function(req, res) {
     var enemies = req.user.enemies;
     if(!enemies) {
         res.json([]);
@@ -118,7 +118,7 @@ app.get('/api/enemies', function(req, res) {
         });
 });
 
-app.get('/api/not-enemies', function(req, res) {
+app.get('/api/not-enemies', authentication.ensureAuthenticated, function(req, res) {
     var enemies = req.user.enemies;
     if(!enemies) {
         res.json([]);
@@ -137,7 +137,7 @@ app.get('/api/not-enemies', function(req, res) {
         });
 });
 
-app.post('/api/cleanup', function(req, res) {
+app.post('/api/cleanup', authentication.ensureAuthenticated, function(req, res) {
     var currentUserId = req.user._id;
     var pooCountToCleanup = req.body.cleanupCount;
     db.userCollection().updateOne(
@@ -155,7 +155,7 @@ app.post('/api/cleanup', function(req, res) {
     );
 });
 
-app.get('/api/enemy-counter', function(req, res){
+app.get('/api/enemy-counter', authentication.ensureAuthenticated, function(req, res){
     var currentUserId = req.user._id;
     db.userCollection().find(
         {enemies: {$all: [currentUserId]}}
@@ -168,7 +168,7 @@ app.get('/api/enemy-counter', function(req, res){
     });
 });
 
-app.post('/api/user/poo', function (req, res) {
+app.post('/api/user/poo', authentication.ensureAuthenticated, function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
         , {$inc: {pooCount: 1}}, function (err, result) {
             if (!err) {
@@ -188,7 +188,7 @@ app.post('/api/user/poo', function (req, res) {
         });
 });
 
-app.post('/api/post/poo', function (req, res) {
+app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res) {
     db.postCollection().updateOne({_id: new ObjectID(req.body.postId)}
         , {$inc: {pooCount: 1}}, function (err, result) {
             if (!err) {
@@ -207,7 +207,7 @@ app.post('/api/post/poo', function (req, res) {
         });
 });
 
-app.get('/api/user/posts/:userId', function (req, res) {
+app.get('/api/user/posts/:userId', authentication.ensureAuthenticated, function (req, res) {
     db.postCollection().find({userId:req.params.userId}).toArray(function(err, docs) {
         if(!err){
             console.log("posts successfully received");
@@ -218,7 +218,7 @@ app.get('/api/user/posts/:userId', function (req, res) {
     });
 });
 
-app.put('/api/user/update-info', function (req, res) {
+app.put('/api/user/update-info', authentication.ensureAuthenticated, function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
         , {
             $set: {
@@ -249,7 +249,8 @@ var userProfilePicStorage = multer.diskStorage({
 
 var userProfilePicUpload = multer({storage: userProfilePicStorage, limits: { fileSize: 1024*1024 }});
 
-app.post('/api/user/upload-avatar', userProfilePicUpload.single('avatar'), function (req, res) {
+app.post('/api/user/upload-avatar', authentication.ensureAuthenticated,
+        userProfilePicUpload.single('avatar'), function (req, res) {
     db.userCollection().updateOne({_id: new ObjectID(req.user._id)}
         , {$set: {avatar: '/pictures/avatars/' + req.file.filename}
         }, function (err, result) {
@@ -274,7 +275,8 @@ var postPicStorage = multer.diskStorage({
 
 var postPicUpload = multer({storage: postPicStorage, limits: { fileSize: 1024*1024 }});
 
-app.post('/api/post/upload-image', postPicUpload.single('post'), function (req, res) {
+app.post('/api/post/upload-image', authentication.ensureAuthenticated,
+        postPicUpload.single('post'), function (req, res) {
     console.log("attachment successfully uploaded");
     res.send({picturePath: '/pictures/posts/' + req.file.filename});
 });

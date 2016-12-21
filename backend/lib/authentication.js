@@ -41,14 +41,11 @@ passport.use(new LocalStrategy({
     }
 ));
 
-exports.ensureAuthenticated = function(role) {
-    return function (req, res, next) {
-
-        if (req.isAuthenticated()){
-            return next();
-        }
-        res.status(401).json({msg: 'You aren’t authenticated!'});
-    };
+exports.ensureAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.status(401).json({msg: 'You aren’t authenticated!'});
 };
 
 exports.getCurrentUser = function(req, res, next){
