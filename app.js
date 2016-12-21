@@ -36,6 +36,7 @@ app.post('/api/signup', function (req, res) {
         email: req.body.email,
         password: req.body.password,
         pooCount: 0,
+        pooCredits: 10,
         avatar: '/pictures/default-user-avatar.png'
     }, function (err, result) {
         if (!err) {
@@ -169,23 +170,27 @@ app.get('/api/enemy-counter', authentication.ensureAuthenticated, function(req, 
 });
 
 app.post('/api/user/poo', authentication.ensureAuthenticated, function (req, res) {
-    db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
-        , {$inc: {pooCount: 1}}, function (err, result) {
-            if (!err) {
-                console.log("poo count successfully updated");
-                db.userCollection().findOne({_id: new ObjectID(req.body.userId)}, function (err, user) {
-                    if (!err) {
-                        console.log("user poo count received");
-                        res.send({_id: user._id,pooCount: user.pooCount});
-                    } else {
-                        console.log(err);
-                        res.status(503).send();
-                    }
-                });
-            } else {
-                console.log(err);
-            }
-        });
+    if(req.user.pooCredits > 0){
+        db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
+            , {$inc: {pooCount: 1}}, function (err, result) {
+                if (!err) {
+                    db.userCollection().updateOne({_id: new ObjectID(req.user._id)}
+                        , {$inc: {pooCredits: -1}}, function (err, result) {
+                            if (!err) {
+                                res.send({message: "poo count successfully updated"});
+                                console.log("poo count successfully updated");
+                            } else {
+                                console.log(err);
+                            }
+                        });
+                } else {
+                    console.log(err);
+                }
+            });
+    } else {
+        console.log("You don't have a poo credits!");
+        res.send({error: "You don't have a poo credits!"})
+    }
 });
 
 app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res) {
