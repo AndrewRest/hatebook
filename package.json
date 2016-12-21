@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Hatebook",
   "repository": "https://github.com/AndrewRest/hatebook",
-  "license": "DWEYW",
+  "license": "MIT",
   "scripts": {
     "prestart": "npm install",
     "start": "node app.js"
