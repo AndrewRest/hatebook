@@ -76,7 +76,7 @@ app.post('/api/post', authentication.ensureAuthenticated, function (req, res) {
     db.postCollection().insert(post, function (err, result) {
         if (!err) {
             console.log("post successfully added");
-            res.send(result.ops);
+            res.send(result.ops[0]);
         } else {
             console.log(err);
         }
