@@ -3,6 +3,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+var db = require('./backend/lib/mongodb_settings');
+
 var app = express();
 app.set('port', 1313);
 
