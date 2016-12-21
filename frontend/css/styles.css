@@ -16,16 +16,16 @@ body {
     padding: 3px 45px;
     background-color:#f7f6f6;
     border: 2px solid #d0d0d0;
+    height: 500px;
 }
 .login-tab{
-    margin-left: 30em !important;
 }
 
 .login-header{
     text-align:center
 }
 .login-title{
-    margin-top:10em;
+    margin-top: 5em;
     font-size: 32px;
     color: #3c92c8;
     text-align:center
