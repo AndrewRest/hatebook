@@ -60,7 +60,7 @@ app.post('/api/signup', function (req, res) {
     })
 });
 
-cron.schedule('0 0 * * *', function () {
+cron.schedule('* */24 * * *', function () {
     db.userCollection().update({}, {$inc: {pooCredits: 10}},{multi: true}, function (err, result) {
             if (!err) {
                 console.log("poo credits for all users updated");
