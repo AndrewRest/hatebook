@@ -74,8 +74,13 @@ app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res)
     db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user) {
         if(!err){
             console.log("user successfully received");
-            delete user.password;
-            res.send(user);
+            if(user) {
+                delete user.password;
+                res.send(user);
+            } else {
+                res.status(404).send();
+            }
+
         } else {
             console.log(err);
             res.status(500).send();
@@ -235,7 +240,7 @@ app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res
 
 app.get('/api/user/posts/:userId', authentication.ensureAuthenticated, function (req, res) {
     db.postCollection().find({userId:req.params.userId}).toArray(function(err, docs) {
-        if(!err){
+        if(!err) {
             console.log("posts successfully received");
             res.send(docs);
         } else {
