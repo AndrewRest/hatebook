@@ -28,7 +28,7 @@ authentication.init(app);
 app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
-    db.userCollection().insert({email: req.body.email, password: req.body.password}, function(err, result) {
+    db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
         if(!err){
             console.log("user successfully registered");
             res.send(result);
@@ -68,6 +68,25 @@ app.post('/api/post', function (req, res) {
             console.log(err);
         }
     })
+});
+
+app.post('/api/user/poo', function (req, res) {
+    db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
+        , {$inc: {pooCount: 1}}, function (err, result) {
+            if (!err) {
+                console.log("poo count successfully updated");
+                db.userCollection().findOne({_id: new ObjectID(req.body.userId)}, function (err, user) {
+                    if (!err) {
+                        console.log("user poo count received");
+                        res.send({_id: user._id,pooCount: user.pooCount});
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                console.log(err);
+            }
+        });
 });
 
 app.listen(app.get('port'), function () {
