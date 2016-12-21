@@ -17,7 +17,7 @@ app.listen(app.get('port'), function () {
 });
 
 app.post('/api/signup', function (req, res) {
-    db.userCollection().insertMany([{email: req.body.email, password: req.body.password}], function(err, result) {
+    db.userCollection().insert({email: req.body.email, password: req.body.password}, function(err, result) {
         if(!err){
             console.log("user successfully registered");
             res.send(result);
