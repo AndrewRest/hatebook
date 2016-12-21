@@ -5,21 +5,15 @@ angular.module('hatebook', [
     'ngTouch',
     'ngSanitize',
     'ngMeta',
-    /*'ngMaterial', 'ngMessages', 'material.svgAssetsCache',*/
     'ui.bootstrap',
-   /* 'preferences',
-    'timer',
-    'ngSanitize',
-    'duScroll',
-    'ngFileUpload',
-    'chart.js'*/
+    'hatebook.login'
 ])
-    .config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $translateProvider, $httpProvider) {
+    .config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
         $locationProvider.hashPrefix('!');
 
         $routeProvider.otherwise({redirectTo: '/login'});
 
-      /*  $httpProvider.interceptors.push('myHttpInterceptor');*/
+        $httpProvider.interceptors.push('myHttpInterceptor');
 
         $locationProvider.html5Mode({
             enabled: true,
@@ -27,21 +21,9 @@ angular.module('hatebook', [
         });
     }])
 
-    .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
-        // initialise google analytics
-      /*  window.ga('create', 'UA-84987971-1', 'auto');*/
-
-        // track pageview on state change
-        $rootScope.$on('$locationChangeSuccess', function (event) {
-        /*    window.ga('set', 'page', $location.path());
-            window.ga('send', 'pageview');*/
-        });
-    }])
-
     .factory('myHttpInterceptor', ['$q', '$rootScope', '$injector', '$location',
         function($q, $rootScope, $injector, $location) {
             $rootScope.http = null;
-
             $rootScope.$watch(function(){
                 $rootScope.currentPath = $location.path();
                 return $location.path();
