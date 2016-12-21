@@ -40,7 +40,7 @@ app.post('/api/signup', function (req, res) {
     }, function (err, result) {
         if (!err) {
             console.log("user successfully registered");
-            res.send(result);
+            res.send(result.ops[0]);
         } else {
             console.log(err);
             res.status(500).send();
