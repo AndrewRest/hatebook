@@ -7,6 +7,13 @@ var cookieParser = require('cookie-parser');
 var ObjectID = require('mongodb').ObjectID;
 var multer  = require('multer');
 
+var api_key = process.env.MAIL_API_KEY;
+var domain = 'mifort.org';
+var mailgun;
+if(process.env.MAIL_API_KEY) {
+    mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+}
+
 //just to not stop after error
 var logger = require('./backend/lib/logger');
 var authentication = require('./backend/lib/authentication');
@@ -41,6 +48,9 @@ app.post('/api/signup', function (req, res) {
         if (!err) {
             console.log("user successfully registered");
             res.send(result);
+            sendNotification({to: req.body.email,
+                              subject: "Let's throw poop online",
+                              text: "Hi! Go to our resource and start to fun."});
         } else {
             console.log(err);
             res.status(500).send();
@@ -284,3 +294,21 @@ app.post('/api/post/upload-image', authentication.ensureAuthenticated,
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });
+
+function sendNotification(message) {
+    if(!process.env.MAIL_API_KEY){
+        console.log('Cannot send email');
+        return;
+    }
+
+    var data = {
+        from: 'Hate You <hatebook@mifort.org>',
+        to: message.to,
+        subject: message.subject,
+        text: message.text
+    };
+
+    mailgun.messages().send(data, function (error, body) {
+        console.log('Message is sent successfully!');
+    });
+}
