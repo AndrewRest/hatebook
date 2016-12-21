@@ -9,6 +9,10 @@ hateBook.config(['$routeProvider', function( $routeProvider) {
             templateUrl:'/login/sign-up.html',
             controller:'signUpController'
         });
+    $routeProvider.when('/user', {
+        templateUrl:'/user/user.html',
+        controller:'userCtrl'
+    });
     $routeProvider.otherwise({redirectTo: '/login'});
 
 }]);

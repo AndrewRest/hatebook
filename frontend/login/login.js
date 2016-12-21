@@ -9,6 +9,7 @@ hateBook.controller('loginCtrl', ['$scope', '$rootScope','loginService','$window
 
     $scope.login = function(){
         loginService.logIn($scope.user).then(function(data){
+            $window.location.href = '/#/user';
             console.log(data)
         }, function(err) {
             $scope.isError = true;
@@ -22,15 +23,3 @@ hateBook.controller('loginCtrl', ['$scope', '$rootScope','loginService','$window
 
 }]);
 
-    /*.factory('loginService',
-        ['$http', function($http) {
-            return {
-                login: function(user, url) {
-                    if(url == '/login') {
-                        return $http.post('/api/v0.1/candidate/login', user);
-                    }
-                }
-
-            };
-        }
-        ]);*/
