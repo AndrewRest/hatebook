@@ -29,7 +29,7 @@ app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
     db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
-        if(!err){
+        if(!err) {
             console.log("user successfully registered");
             res.send(result);
         } else {
@@ -97,6 +97,23 @@ app.get('/api/enemies', function(req, res) {
         return;
     }
     db.userCollection().find({_id: {$in : enemies}})
+        .toArray(function(err, selectedEnemies) {
+            if(err) {
+                console.log(err);
+                res.status(404).send();
+            } else {
+                res.json(selectedEnemies);
+            }
+        });
+});
+
+app.get('/api/not-enemies', function(req, res) {
+    var enemies = req.user.enemies;
+    if(!enemies) {
+        res.json([]);
+        return;
+    }
+    db.userCollection().find({_id: {$nin : enemies}})
         .toArray(function(err, selectedEnemies) {
             if(err) {
                 console.log(err);
