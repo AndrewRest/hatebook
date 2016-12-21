@@ -28,7 +28,7 @@ authentication.init(app);
 app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
-    db.userCollection().insert({email: req.body.email, password: req.body.password}, function(err, result) {
+    db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
         if(!err){
             console.log("user successfully registered");
             res.send(result);
@@ -87,6 +87,56 @@ app.get('/api/add-enemy/:id', function(req, res) {
                 res.json({msg: "Enemy is added!"});
             }
         });
+    }
+);
+
+app.post('/api/user/poo', function (req, res) {
+    db.userCollection().updateOne({_id: new ObjectID(req.body.userId)}
+        , {$inc: {pooCount: 1}}, function (err, result) {
+            if (!err) {
+                console.log("poo count successfully updated");
+                db.userCollection().findOne({_id: new ObjectID(req.body.userId)}, function (err, user) {
+                    if (!err) {
+                        console.log("user poo count received");
+                        res.send({_id: user._id,pooCount: user.pooCount});
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                console.log(err);
+            }
+        });
+});
+
+app.post('/api/post/poo', function (req, res) {
+    db.postCollection().updateOne({_id: new ObjectID(req.body.postId)}
+        , {$inc: {pooCount: 1}}, function (err, result) {
+            if (!err) {
+                console.log("poo count successfully updated");
+                db.postCollection().findOne({_id: new ObjectID(req.body.postId)}, function (err, post) {
+                    if (!err) {
+                        console.log("post poo count received");
+                        res.send({_id: post._id,pooCount: post.pooCount});
+                    } else {
+                        console.log(err);
+                    }
+                });
+            } else {
+                console.log(err);
+            }
+        });
+});
+
+app.get('/api/user/posts/:userId', function (req, res) {
+    db.postCollection().find({userId:req.params.userId}).toArray(function(err, docs) {
+        if(!err){
+            console.log("posts successfully received");
+            res.send(docs);
+        } else {
+            console.log(err);
+        }
+    });
 });
 
 app.listen(app.get('port'), function () {
