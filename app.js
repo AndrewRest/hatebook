@@ -32,7 +32,7 @@ app.use('/api', bodyParser.json());
 
 app.post('/api/signup', function (req, res) {
     db.userCollection().insert({email: req.body.email, password: req.body.password, pooCount: 0}, function(err, result) {
-        if(!err){
+        if(!err) {
             console.log("user successfully registered");
             res.send(result);
         } else {
@@ -78,7 +78,7 @@ app.post('/api/post', function (req, res) {
 app.get('/api/add-enemy/:id', function(req, res) {
     var currentUserId = req.user._id;
     var enemyId = new ObjectID(req.params.id);
-    db.userCollection().update(
+    db.userCollection().updateOne(
         {_id: currentUserId},
         { $push: { enemies: enemyId }},
         function(err, updatedUser) {
@@ -87,7 +87,7 @@ app.get('/api/add-enemy/:id', function(req, res) {
                 res.json(err);
             } else {
                 console.log('Enemy is added', enemyId.toHexString());
-                res.json({msg: "Enemy is added!"});
+                res.json(updatedUser);
             }
         });
     }
@@ -108,6 +108,43 @@ app.get('/api/enemies', function(req, res) {
                 res.json(selectedEnemies);
             }
         });
+});
+
+app.get('/api/not-enemies', function(req, res) {
+    var enemies = req.user.enemies;
+    if(!enemies) {
+        res.json([]);
+        return;
+    }
+    //enemy to your-self
+    enemies.push(req.user._id);
+    db.userCollection().find({_id: {$nin : enemies}})
+        .toArray(function(err, selectedEnemies) {
+            if(err) {
+                console.log(err);
+                res.status(404).send();
+            } else {
+                res.json(selectedEnemies);
+            }
+        });
+});
+
+app.post('/api/cleanup', function(req, res) {
+    var currentUserId = req.user._id;
+    var pooCountToCleanup = req.body.cleanupCount;
+    db.userCollection().updateOne(
+        {_id: currentUserId},
+        {$inc: {pooCount: -pooCountToCleanup}},
+        function(err, updatedUser) {
+            if(err) {
+                console.log(err);
+                res.status(503).send();
+            } else {
+                console.log('Cleanup is completed');
+                res.json(updatedUser);
+            }
+        }
+    );
 });
 
 app.post('/api/user/poo', function (req, res) {
