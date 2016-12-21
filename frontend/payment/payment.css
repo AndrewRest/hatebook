@@ -1,0 +1,26 @@
+.payment-block{
+    background-color: #ffffff;
+    padding: 30px!important;
+    color: #865630;
+}
+.payment-block h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.payment-block button, .payment-block input{
+    border: none;
+    border-radius: 0;
+}
+
+.payment-block .credit-card-div  span {
+    padding-top:10px;
+}
+.payment-block .credit-card-div img {
+    padding-top:30px;
+}
+.payment-block .credit-card-div .small-font {
+    font-size:9px;
+}
+.payment-block .credit-card-div .pad-adjust {
+    padding-top:10px;
+}

@@ -1,4 +1,6 @@
 header {
+  padding-left: 15%;
+  padding-right: 15%;
   background-color: #f5eee4; }
   header .logo-header img {
     width: 200px; }
@@ -6,10 +8,13 @@ header {
     font-family: 'Comic Sans MS'; }
   header .right-header {
     text-align: right; }
+    header .right-header .dropbox {
+      position: relative; }
     header .right-header .enemies-btn {
       margin-right: 20px; }
 
 .container-grid {
+  margin-left: 12%;
   padding-right: 15%;
   padding-left: 15%; }
   .container-grid .left-panel {
@@ -21,7 +26,7 @@ header {
     .container-grid .left-panel .avatar {
       text-align: center;
       margin-top: 20px;
-      height: 300px; }
+      height: 200px; }
       @media (max-width: 991px) {
         .container-grid .left-panel .avatar {
           height: 200px; } }
