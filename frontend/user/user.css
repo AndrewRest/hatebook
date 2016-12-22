@@ -57,7 +57,7 @@ header {
       z-index: 10;
       opacity: 0.1;
       background-color: #f0ad4e;
-      max-height: 120px; }
+      max-height: 100px; }
     .container-grid .left-panel .po-like {
       margin-top: 150px;
       font-size: 18px;
