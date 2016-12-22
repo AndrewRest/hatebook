@@ -312,6 +312,18 @@ app.post('/api/post/upload-image', authentication.ensureAuthenticated,
     res.send({picturePath: '/posts/' + req.file.filename});
 });
 
+app.post('/api/user/buy-poo', authentication.ensureAuthenticated, function (req, res) {
+    db.userCollection().updateOne({_id: new ObjectID(req.user._id)}, {$inc: {pooCredits: req.body.count}}, function (err, result) {
+        if (!err) {
+            console.log("poo credits updated");
+            res.send({message:'poo credits updated'});
+        } else {
+            console.log(err);
+            res.sendStatus(500);
+        }
+    });
+});
+
 app.listen(app.get('port'), function () {
     console.log('Hatebook is started on port:' + app.get('port'));
 });

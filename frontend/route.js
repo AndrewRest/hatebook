@@ -22,16 +22,17 @@ hateBook.config(['$routeProvider', function ($routeProvider) {
             controller: 'notEnamiesController'
         })
         .when('/clean', {
-        controller: 'userCtrl'
-        })
-        .when('/clean', {
             templateUrl: '/payment/cleanPoo.html',
             controller: 'paymentCtrl'
         })
         .when('/edit', {
             templateUrl: '/edit/edit.html',
             controller: 'editCtrl'
-        });
+        })
+        .when('/buy', {
+        templateUrl: '/payment/buyPoo.html',
+        controller: 'paymentCtrl'
+    });
     $routeProvider.otherwise({redirectTo: '/login'});
 
 }]);
