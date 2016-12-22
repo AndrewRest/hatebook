@@ -168,10 +168,21 @@ app.get('/api/not-enemies', authentication.ensureAuthenticated, function(req, re
 
 app.post('/api/cleanup', authentication.ensureAuthenticated, function(req, res) {
     var currentUserId = req.user._id;
-    var pooCountToCleanup = req.body.cleanupCount;
+    var reqCountToCleanup = req.body.cleanupCount;
+    var countToCleanup;
+    if(req.user.pooCount) {
+        if(reqCountToCleanup > req.user.pooCount){
+            countToCleanup = -req.user.pooCount;
+        } else {
+            countToCleanup = -reqCountToCleanup
+        }
+    } else {
+        res.json({ok:1});
+        return;
+    }
     db.userCollection().updateOne(
         {_id: currentUserId},
-        {$inc: {pooCount: -pooCountToCleanup}},
+        {$inc: {pooCount: countToCleanup}},
         function(err, updatedUser) {
             if(err) {
                 console.log(err);
