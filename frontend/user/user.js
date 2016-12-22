@@ -9,6 +9,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
         console.log(err);
         }
     );
+    $scope.hgt = 0;
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function(data) {
             $scope.currentUser = data.data;
@@ -24,6 +25,10 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
             $scope.userPosts = data.data;
 
         });
+    };
+    $scope.addPoo = function() {
+        $scope.hgt += 10;
+        console.log($scope.height);
     };
 
     $scope.toEdit = function() {
