@@ -70,6 +70,17 @@ cron.schedule('* */24 * * *', function () {
         });
 });
 
+cron.schedule('5 * * * *', function() {
+    db.userCollection().update({pooCount: {$gt:0}}, {$inc: {pooCount: -1}}, {multi: true},
+        function(err, result){
+            if(!err) {
+                console.log("Minus 1 poo!!!");
+            } else {
+                console.log(err);
+            }
+        });
+});
+
 app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res) {
     db.userCollection().findOne({_id: new ObjectID(req.params.id)}, function(err, user) {
         if(!err){
