@@ -20,6 +20,9 @@ hateBook.factory('userService', ['$http', function ($http) {
         },
         getNotEnemies:function(){
             return $http.get('/api/not-enemies')
+        },
+        logout: function(){
+            return $http.get('/api/logout')
         }
     };
 }]);

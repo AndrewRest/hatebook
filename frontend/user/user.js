@@ -1,5 +1,12 @@
 'use strict';
 hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+    userService.getUser().then(function(data) {
+        console.log(data.data);
+    }, function(err){
+        $location.path('/login');
+        console.log(err);
+        }
+    );
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function(data) {
             console.log(data.data);
@@ -21,7 +28,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.toEdit = function() {
         $location.path('/edit');
-        console.log('asdasfasd');
     };
 
     $scope.cleanPoo = function () {
@@ -46,5 +52,12 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     };
     $scope.toNotEnemiesPg = function(){
         $location.path('/not-enemies')
+    }
+    $scope.logout = function(){
+        userService.logout().then(function(){
+            $location.path('/login')
+        }, function(err){
+            console.log(err)
+        })
     }
 }]);
