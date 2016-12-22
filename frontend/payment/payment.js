@@ -11,7 +11,10 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
     $scope.pooToBuy = 0;
     $scope.paymentForm = false;
 
-    $scope.showPaymentForm = function (count) {
+    $scope.showPaymentForm = function (count, isCleanUpForm) {
+        if(isCleanUpForm && $scope.pooToClean > $scope.userPooCount){
+            return $scope.paymentErrorMessage = "You can not clean the poop, more than you have. Please provide less.";
+        }
         $scope.paymentErrorMessage = null;
         if (count > 0) {
             $scope.paymentForm = true;
