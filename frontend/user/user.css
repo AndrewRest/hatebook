@@ -42,7 +42,8 @@ header {
       height: auto !important;
       margin-top: 10px; }
     .container-grid .left-panel .poo-div {
-      transform: rotate(-180deg);
+      position: absolute;
+      top: 0;
       opacity: 0.1;
       background-color: #f0ad4e; }
     .container-grid .left-panel .po-like {
@@ -142,6 +143,8 @@ header {
       display: flex; }
       .container-grid .new-posts .flex-group .avatar-group {
         width: 30%; }
+        .container-grid .new-posts .flex-group .avatar-group div {
+          text-align: center; }
     .container-grid .new-posts img {
       width: 70%;
       margin-top: 10px;

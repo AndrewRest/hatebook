@@ -19,8 +19,8 @@
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
         <img src="../common/img/soap.png" class="soap" ng-click="cleanPoo()" ng-show="isMyPage">
-        <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
         <div class="poo-div" ng-style="{height:hgt+'px'}"></div>
+        <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
         <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png"/></a><span class="po">{{currentUser.pooCount || 0}}</span>
             <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>0</span></span></div>
         <div class="enemies-list" ng-click="toEnemiesPg()"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
