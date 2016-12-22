@@ -26,5 +26,9 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
             console.log(data);
             $location.path('/user');
         });
+    };
+
+    $scope.cancelCleaning = function () {
+        $location.path('/user');
     }
 }]);
