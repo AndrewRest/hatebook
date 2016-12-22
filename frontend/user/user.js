@@ -3,7 +3,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.currentUser = $rootScope.anotherUserInfo;
     $scope.isMyPage = false;
     $scope.hgt = 0;
-    
+
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function(data) {
             $scope.loggedInUser = data.data;
@@ -65,6 +65,14 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
         }, function(err){
             console.log(err)
         })
+    };
+
+    $scope.likePost = function (post) {
+        userService.likePost({postId: post._id}).then(function(){
+            $scope.getPosts();
+        }, function(err){
+            console.log(err)
+        });
     };
 
 }]);

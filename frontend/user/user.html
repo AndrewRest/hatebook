@@ -40,12 +40,12 @@
         <textarea ng-model="newPostContent"></textarea>
         <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
     </div>
-    <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts ">
+    <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts track by $index">
         <div class="flex-group">
         <div class="avatar-group"><img ng-src={{post.authorAvatar}} />
         <div>{{post.authorName || 'some name'}}</div></div>
         <textarea class="posts-text">{{post.content}}</textarea>
         </div>
-        <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>{{post.pooCount || 0}}</span></div>
+        <div class="po-like-posts" ng-click="likePost(post)"><a href=""><img src="../common/img/poo-icon.png"/></a><span>{{post.pooCount || 0}}</span></div>
     </div>
 </div>
