@@ -13,6 +13,9 @@ hateBook.controller('enemiesList',['$scope','$rootScope','userService','$locatio
     $scope.toEdit = function() {
         $location.path('/edit');
     };
+    $scope.backToYourPage = function(){
+        $location.path('/user');
+    };
 
     $scope.getAnotherUser = function(id){
         userService.getOtherPage(id).then(function(data){

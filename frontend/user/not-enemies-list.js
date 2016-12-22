@@ -8,6 +8,10 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
         console.log(err);
     });
 
+    $scope.backToYourPage = function(){
+        $location.path('/user');
+    };
+
     $scope.toEdit = function() {
         $location.path('/edit');
     };
