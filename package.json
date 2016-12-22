@@ -6,7 +6,7 @@
   "repository": "https://github.com/AndrewRest/hatebook",
   "license": "MIT",
   "scripts": {
-    "prestart": "npm install",
+    "prestart": "cd frontend && bower install",
     "start": "node app.js"
   },
   "dependencies": {
