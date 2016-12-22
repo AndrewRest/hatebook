@@ -34,7 +34,7 @@ header {
   padding-right: 15%;
   padding-left: 15%;
   .left-panel {
-    height: 500px;
+    height: 440px;
     background-color: #fff;
     .name, .enemy, .not-enemies{
       text-align: center;
@@ -43,12 +43,13 @@ header {
     .avatar {
       text-align: center;
       margin-top: 20px;
-      height: 170px;
+      height: 170px !important;
       @media(max-width: 991px) {
-        height: 150px;
+        height: 130px !important;
       }
     }
     .po-like {
+      display: flex;
       a {
         cursor: pointer;
         text-decoration: none;
@@ -117,7 +118,7 @@ header {
     }
   }
 
-  .posts {
+  .posts,.new-posts {
     margin-left: 3.5%;
     background-color: #fff;
     margin-top: 20px;
@@ -134,7 +135,7 @@ header {
     }
     .posts-text {
       word-break: break-all;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .po-like-posts {
       text-align:right;
@@ -143,4 +144,8 @@ header {
       }
     }
   }
+    .new-posts {
+     margin-left: 28.5%;
+      height: auto;
+    }
 }
