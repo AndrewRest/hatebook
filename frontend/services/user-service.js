@@ -27,7 +27,7 @@ hateBook.factory('userService', ['$http', function ($http) {
         logout: function(){
             return $http.get('/api/logout')
         },
-        addToEnemies: function(id){
+        addEnemy: function(id){
             return $http.get('/api/add-enemy/' + id);
         },
         likePost: function (req) {

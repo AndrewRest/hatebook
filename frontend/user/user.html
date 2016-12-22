@@ -25,7 +25,7 @@
             <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>{{hatersCount || 0}}</span></span></div>
         <div class="enemies-list" ng-click="toEnemiesPg()" ng-show="isMyPage"><a href="/#/enemies-list">My enemies: {{currentUser.enemies.length || 0}}</a></div>
         <div class="not-enemies-list" ng-click="toNotEnemiesPg()" ng-show="isMyPage"><a href="/#/not-enemies">Not Enemies</a></div>
-        <div class="not-enemies-list" ng-hide="isMyPage || currentUser.enemy"><a>Add to Enemies</a></div>
+        <div class="not-enemies-list" ng-hide="isMyPage || currentUser.enemy" ng-click="makeEnemy(currentUser)"><a>Add to Enemies</a></div>
         <div class="your-enemy" ng-show="currentUser.enemy">Your enemy</div>
         <div class="not-enemies-list" ng-click="buyPoo()" ng-show="isMyPage"><a>My credits:</a>{{currentUser.pooCredits || 0}}</div>
     </div>

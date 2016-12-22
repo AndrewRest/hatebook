@@ -79,4 +79,11 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
         });
     };
 
+    $scope.makeEnemy = function (enemy) {
+        userService.addEnemy(enemy._id).then(function(){
+            $scope.currentUser.enemy = true;
+        }, function(err){
+            console.log(err)
+        });
+    };
 }]);

@@ -12,10 +12,10 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
         $location.path('/edit');
     };
 
-    $scope.getToEnemies = function(id){
-        console.log('id', id);
-        userService.addToEnemies(id).then(function(data){
-
+    $scope.getToEnemies = function(enemy){
+        console.log('id', enemy._id);
+        userService.addEnemy(enemy._id).then(function(data){
+            enemy.enemy = true;
         }, function(err){
             console.log(err)
         });
