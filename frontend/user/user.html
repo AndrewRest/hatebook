@@ -26,6 +26,7 @@
         <div class="enemies-list" ng-click="toEnemiesPg()"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
         <div class="not-enemies-list" ng-click="toNotEnemiesPg()"><a href="/#/not-enemies">Not Enemies</a></div>
         <div class="not-enemies-list"><a>Add to Enemies</a></div>
+        <div class="not-enemies-list" ng-click="buyPoo()"><a>My credits:</a>{{currentUser.pooCredits || 0}}</div>
     </div>
     <div class="right-panel col-lg-6 col-md-7 col-sm-7 col-xs-7">
         <div class="user-info"><h4>User Info</h4>
