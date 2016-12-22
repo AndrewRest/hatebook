@@ -55,7 +55,8 @@ header {
       margin-top: 10px;
     }
     .poo-div {
-      transform: rotate(-180deg);
+      position: absolute;
+      top: 0;
       opacity :0.1;
       background-color: #f0ad4e;
     }
@@ -178,6 +179,9 @@ header {
         display: flex;
         .avatar-group {
           width: 30%;
+          div {
+            text-align: center;
+          }
         }
       }
       word-break: break-all;
