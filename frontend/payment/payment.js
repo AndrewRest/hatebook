@@ -11,15 +11,15 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
     $scope.pooToBuy = 0;
     $scope.paymentForm = false;
 
-    $scope.showPaymentForm = function () {
+    $scope.showPaymentForm = function (count) {
         $scope.paymentErrorMessage = null;
-        if ($scope.pooToClean > 0) {
+        if (count > 0) {
             $scope.paymentForm = true;
-        } else if ($scope.pooToClean < 0) {
+        } else if (count < 0) {
             $scope.paymentErrorMessage = 'Who do you want to cheat, asshole?'
         }
         else {
-            $scope.paymentErrorMessage = 'Provide poo count to clean!';
+            $scope.paymentErrorMessage = 'Provide poo count!';
         }
     };
     
@@ -30,8 +30,8 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
         });
     };
 
-    $scope.cleanPoo = function (pooCount) {
-        paymentService.cleanPoo({cleanupCount:pooCount}).then(function (data) {
+    $scope.buyPoo = function (pooCount) {
+        paymentService.buyPoo({count:pooCount}).then(function (data) {
             console.log(data);
             $location.path('/user');
         });
