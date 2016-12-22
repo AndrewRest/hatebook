@@ -1,0 +1,35 @@
+.image-user img{
+    width:80px;
+    height:80px;
+    margin-left: 12px;
+}
+.enemies-table{
+    left:22%;
+    background-color:#ffffff
+}
+.enemies-table h1 {
+    border-bottom: solid #f5eee4 1px;
+    padding-left: 12px;
+}
+.enemies .image-user {
+    float:left;
+}
+.get-poo {
+    float:right
+}
+.info-haters {
+    float:left;
+    font-size: 20px;
+    margin-left: 7%;
+}
+.enemies {
+    padding: 12px 0;
+    border-bottom: solid #f5eee4 1px
+}
+.get-poo .btn {
+    font-size: 21px;
+    margin: 18px 12px 0 0;
+}
+.get-poo img {
+    cursor:pointer
+}
