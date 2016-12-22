@@ -1,3 +1,3 @@
 'use strict';
 
-var hateBook = angular.module('hateBook', ['ngRoute']);
+var hateBook = angular.module('hateBook', ['ngRoute','ngFileUpload']);

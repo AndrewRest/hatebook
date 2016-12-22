@@ -1,5 +1,5 @@
 'use strict';
-hateBook.controller('editCtrl', ['$scope', '$rootScope','userService', '$location', function($scope, $rootScope, userService, $location) {
+hateBook.controller('editCtrl', ['$scope', '$rootScope','userService', '$location','Upload', function($scope, $rootScope, userService, $location, Upload) {
     $scope.userInfo = {
         userId: "",
         username:"",
@@ -26,4 +26,13 @@ hateBook.controller('editCtrl', ['$scope', '$rootScope','userService', '$locatio
             console.log(err)
         })
     };
+    $scope.uploadPic = function(file) {
+        file.upload = Upload.upload({
+            url: '/api/user/upload-avatar',
+            data: {avatar: file}
+        });
+        file.upload.then(function (response) {
+            console.log(response);
+        });
+    }
 }]);

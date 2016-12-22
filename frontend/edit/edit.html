@@ -26,8 +26,12 @@
                         <label for="books" class="title">Books</label>
                         <textarea placeholder="I hate next books" type="text" id="books" class="form-control contact" ng-model="userInfo.hateBooks" ></textarea>
                     </div>
-
-                    <button  id="submit" name="submit" class="btn btn-primary login-btn">
+                    <div>
+                        <label for="name" class="title">Avatar</label>
+                        <input type="file" ngf-select ng-model="picFile" name="file"
+                               accept="image/*">
+                    </div>
+                    <button  id="submit" name="submit" class="btn btn-primary login-btn" ng-click="uploadPic(picFile)">
                         Save
                     </button>
                 </form>
