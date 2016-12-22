@@ -5,14 +5,17 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.hgt = 0;
 
     $scope.getCurrentUserInfo = function () {
-        userService.getUser().then(function(data) {
+        userService.getUser().then(function (data) {
             $scope.loggedInUser = data.data;
-            if(!$scope.currentUser){
+            if (!$scope.currentUser) {
                 $scope.currentUser = $scope.loggedInUser;
                 $scope.isMyPage = true;
             }
-                $scope.getPosts();
-        }, function(err){
+            $scope.getPosts();
+            userService.getHatersCount($scope.currentUser._id).then(function (result) {
+                $scope.hatersCount = result.data.haters;
+            });
+        }, function (err) {
             $location.path('/login');
             console.log(err);
         });

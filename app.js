@@ -196,8 +196,8 @@ app.post('/api/cleanup', authentication.ensureAuthenticated, function(req, res) 
     );
 });
 
-app.get('/api/enemy-counter', authentication.ensureAuthenticated, function(req, res){
-    var currentUserId = req.user._id;
+app.get('/api/enemy-counter/:id', authentication.ensureAuthenticated, function(req, res){
+    var currentUserId = new ObjectID(req.params.id);
     db.userCollection().find(
         {enemies: {$all: [currentUserId]}}
     ).count(function(err, count) {
