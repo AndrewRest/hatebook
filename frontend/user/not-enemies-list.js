@@ -1,4 +1,4 @@
-hateBook.controller('notEnamiesController',['$scope','userService','$location', function($scope, userService, $location){
+hateBook.controller('notEnamiesController',['$scope','userService','$location', '$rootScope', function($scope, userService, $location, $rootScope){
     $scope.notEnemies =[];
     userService.getNotEnemies().then(function(data){
         $scope.notEnemies = data.data;
@@ -26,6 +26,16 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
         }, function(err){
             console.log(err)
         })
-    }
+    };
 
+    $scope.goToUserPage = function(user){
+        userService.getOtherPage(user._id).then(function(data){
+                $rootScope.anotherUserInfo = data.data;
+                console.log(data);
+                $location.path('/user');
+            }, function(err){
+                console.log(err)
+            }
+        )
+    };
 }]);
