@@ -83,6 +83,13 @@ header {
       margin-top: 10px;
       border-radius: 1px;
       padding: 5px 0 5px 3px; }
+    .container-grid .left-panel .your-enemy {
+      text-align: center;
+      margin-top: 10px;
+      border-radius: 1px;
+      padding: 5px 0 5px 3px;
+      background-color: #da2f47;
+      color: #ffffff; }
     .container-grid .left-panel .enemies-list:hover {
       text-decoration: none;
       background-color: #f5eee4; }
