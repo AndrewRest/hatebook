@@ -38,6 +38,10 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.cleanPoo = function () {
         $location.path('/clean');
     };
+    
+    $scope.buyPoo = function () {
+        $location.path('/buy');
+    };
 
     $scope.createNewPost = function (content) {
         if (content) {
