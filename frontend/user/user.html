@@ -20,7 +20,7 @@
            <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
            <button ng-click="cleanPoo()">clean</button>
            <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
-           <div class="po-like"><span><a><img src="../common/img/Poomoji.png"/></a><span>0</span></span>
+           <div class="po-like"><span><a><img src="../common/img/Poomoji.png"/></a><span>{{currentUser.pooCount || 0}}</span></span>
            <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>0</span></span></div>
            <div class="enemies-list"><a>Enemies: {{currentUser.enemies.length || 0}}</a></div>
            <div class="not-enemies-list"><a>Not Enemies</a></div>
