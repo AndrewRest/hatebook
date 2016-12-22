@@ -3,8 +3,8 @@ hateBook.factory('userService', ['$http', function ($http) {
         getEnemies: function () {
             return $http.get('api/enemies');
         },
-        userAddPoo: function (id) {
-            return $http.post('api/user/poo', id)
+        userAddPoo: function (req) {
+            return $http.post('api/user/poo', req)
         },
         getOtherPage: function (id) {
             return $http.get('api/user/' +id)
