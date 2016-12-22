@@ -23,7 +23,7 @@
         <div class="po-like"><span><a><img
                 src="../common/img/Poomoji.png"/></a><span>{{currentUser.pooCount || 0}}</span></span>
             <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>0</span></span></div>
-        <div class="enemies-list"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
+        <div class="enemies-list" ng-click="toEnemiesPg()"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
         <div class="not-enemies-list"><a href="/#/not-enemies">Not Enemies</a></div>
         <div class="not-enemies-list"><a>Add to Enemies</a></div>
     </div>

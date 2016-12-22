@@ -44,5 +44,11 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
                 $scope.getPosts();
             });
         }
+    };
+    $scope.toEnemiesPg = function(){
+        $location.path('/enemies-list')
+    };
+    $scope.toNotEnemiesPg = function(){
+        $location.path('/not-enemies')
     }
 }]);
