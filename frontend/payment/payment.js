@@ -11,6 +11,7 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
     $scope.paymentForm = false;
 
     $scope.showPaymentForm = function () {
+        $scope.paymentErrorMessage = null;
         if ($scope.pooToClean > 0) {
             $scope.paymentForm = true;
         } else if ($scope.pooToClean < 0) {
