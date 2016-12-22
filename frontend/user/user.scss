@@ -48,12 +48,10 @@ header {
     }
     .avatar {
       text-align: center;
-      height: 130px !important;
-      @media(max-width: 991px) {
-        height: 100px !important;
-      }
+      height: auto !important;
     }
     .po-like {
+      margin-top: 15px;
       font-size: 18px;
       display: flex;
       a {

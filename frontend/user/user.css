@@ -36,11 +36,9 @@ header {
       margin-top: 20px; }
     .container-grid .left-panel .avatar {
       text-align: center;
-      height: 130px !important; }
-      @media (max-width: 991px) {
-        .container-grid .left-panel .avatar {
-          height: 100px !important; } }
+      height: auto !important; }
     .container-grid .left-panel .po-like {
+      margin-top: 15px;
       font-size: 18px;
       display: flex; }
       .container-grid .left-panel .po-like a {
