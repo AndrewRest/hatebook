@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 
-var mongodbUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/hatebook';
+var mongodbUrl = process.env.MONGODB_URI|| 'mongodb://localhost:27017/hatebook';
 
 var userCollectionName = 'users';
 var postCollectionName = 'posts';

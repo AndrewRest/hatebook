@@ -3,7 +3,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
 
     $scope.isMyPage = false;
-    $scope.hgt = 0;
 
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function (data) {
@@ -11,6 +10,9 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
             if (!$scope.currentUser) {
                 $scope.currentUser = $scope.loggedInUser;
                 $scope.isMyPage = true;
+            } else {
+                $scope.hgt = $scope.currentUser.pooCount*0.5;
+                console.log($scope.currentUser.pooCount);
             }
             $scope.getPosts();
             userService.getHatersCount($scope.currentUser._id).then(function (result) {
@@ -21,7 +23,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
             console.log(err);
         });
     };
-
     $scope.getPosts = function () {
         userService.getPosts($scope.currentUser._id).then(function(data) {
             $scope.userPosts = data.data;
@@ -29,7 +30,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     };
     $scope.addPoo = function() {
         if($scope.loggedInUser.pooCredits > 0){
-            $scope.hgt += 10;
+            $scope.hgt += 0.5;
             console.log($scope.height);
             userService.addPoo({userId:$scope.currentUser._id}).then(function () {
                 $scope.currentUser.pooCount += 1;
@@ -59,7 +60,8 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
             userService.createPost({
                 authorName: $scope.loggedInUser.username,
                 content: content,
-                userId: $scope.currentUser._id
+                userId: $scope.currentUser._id,
+                authorAvatar: $scope.loggedInUser.avatar
             }).then(function (data) {
                 console.log(data.data);
                 $scope.newPostOnFocus = false;
