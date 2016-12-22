@@ -88,7 +88,9 @@ app.get('/api/user/:id', authentication.ensureAuthenticated, function (req, res)
     });
 });
 
-app.get('/api/current-user', authentication.getCurrentUser);
+app.get('/api/current-user',
+        authentication.ensureAuthenticated,
+        authentication.getCurrentUser);
 
 app.post('/api/post', authentication.ensureAuthenticated, function (req, res) {
     var post = {

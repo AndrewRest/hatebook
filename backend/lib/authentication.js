@@ -50,7 +50,9 @@ exports.ensureAuthenticated = function (req, res, next) {
 
 exports.getCurrentUser = function(req, res, next){
     console.log('getCurrentUser API');
-    delete req.user.password;
+    if(req.user) {
+        delete req.user.password;
+    }
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(req.user);
 };
