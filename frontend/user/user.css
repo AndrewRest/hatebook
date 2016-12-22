@@ -110,22 +110,22 @@ header {
         word-break: break-all;
         text-align: left; }
   .container-grid .new-post-onfocus {
-    height: 150px !important;
+    height: 200px !important;
     transition: height 0.3s ease-out; }
   .container-grid .posts, .container-grid .new-posts {
     margin-left: 3.5%;
     background-color: #fff;
     margin-top: 20px;
-    height: 75px;
+    height: 135px;
     transition: height 0.3s ease-out; }
     .container-grid .posts textarea, .container-grid .new-posts textarea {
       margin-top: 10px;
       resize: none;
-      height: 30px;
+      height: 80px;
       width: 100%;
       transition: height 0.3s ease-out; }
     .container-grid .posts .new-post-textarea-onfocus, .container-grid .new-posts .new-post-textarea-onfocus {
-      height: 100px;
+      height: 150px;
       transition: height 0.3s ease-out; }
     .container-grid .posts button, .container-grid .new-posts button {
       float: right;

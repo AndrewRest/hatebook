@@ -143,24 +143,24 @@ header {
     }
   }
 .new-post-onfocus{
-  height: 150px!important;
+  height: 200px!important;
   transition: height 0.3s ease-out;
 }
   .posts,.new-posts {
     margin-left: 3.5%;
     background-color: #fff;
     margin-top: 20px;
-    height: 75px;
+    height: 135px;
     transition: height 0.3s ease-out;
     textarea {
       margin-top: 10px;
       resize: none;
-      height: 30px;
+      height: 80px;
       width: 100%;
       transition: height 0.3s ease-out;
     }
     .new-post-textarea-onfocus {
-      height: 100px;
+      height: 150px;
       transition: height 0.3s ease-out;
     }
     button {
