@@ -41,8 +41,10 @@ header {
       text-align: center;
       height: auto !important;
       margin-top: 10px; }
-      .container-grid .left-panel .avatar img {
-        background: url(images/hand.png) repeat-y, #fc0 url(images/bg-right.png) repeat-y 100% 0; }
+    .container-grid .left-panel .poo-div {
+      transform: rotate(-180deg);
+      opacity: 0.1;
+      background-color: #f0ad4e; }
     .container-grid .left-panel .po-like {
       margin-top: 15px;
       font-size: 18px;
@@ -124,7 +126,8 @@ header {
       overflow: hidden;
       padding-top: 10px;
       padding-left: 25px;
-      border: none; }
+      border: none;
+      pointer-events: none; }
     .container-grid .posts .po-like-posts, .container-grid .new-posts .po-like-posts {
       margin-top: 5px;
       text-align: right; }

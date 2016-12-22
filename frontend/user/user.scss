@@ -53,10 +53,11 @@ header {
       text-align: center;
       height: auto !important;
       margin-top: 10px;
-      img {
-        background: url(images/hand.png) repeat-y,
-        #fc0 url(images/bg-right.png) repeat-y 100% 0;
-      }
+    }
+    .poo-div {
+      transform: rotate(-180deg);
+      opacity :0.1;
+      background-color: #f0ad4e;
     }
     .po-like {
       margin-top: 15px;
@@ -161,6 +162,7 @@ header {
       padding-top: 10px;
       padding-left: 25px;
       border: none;
+      pointer-events: none;
     }
     .po-like-posts {
       margin-top:5px;
