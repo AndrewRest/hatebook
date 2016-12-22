@@ -6,11 +6,12 @@
   "repository": "https://github.com/AndrewRest/hatebook",
   "license": "MIT",
   "scripts": {
-    "postinstall": "cd frontend && bower install",
+    "postinstall": "cd frontend && ./node_modules/bower/bin/bower install",
     "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
