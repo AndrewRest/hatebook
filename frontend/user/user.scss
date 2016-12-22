@@ -41,6 +41,9 @@ header {
         position: relative;
         left: 88%;
         width: 20%;
+        @media(min-width: 1200px){
+          width: 15%;
+        }
       }
     .name, .enemy, .not-enemies{
       text-align: center;
@@ -49,6 +52,11 @@ header {
     .avatar {
       text-align: center;
       height: auto !important;
+      margin-top: 10px;
+      img {
+        background: url(images/hand.png) repeat-y,
+        #fc0 url(images/bg-right.png) repeat-y 100% 0;
+      }
     }
     .po-like {
       margin-top: 15px;
