@@ -1,0 +1,40 @@
+.edit-tab {
+  .edit-table {
+      width: 520px;
+      color: #a2a2a2;
+      margin: 18px auto 50px;
+      padding: 3px 45px;
+      background-color:#f7f6f6;
+      border: 2px solid #d0d0d0;
+      min-height: 270px;
+    .form-horizontal {
+      div {
+        margin-top: 15px;
+      }
+    }
+    .name {
+      display: inline-block;
+        width: 89%;
+    }
+    .hate-label,.hate-movie-label,.hate-books-label {
+      position: relative;
+      top: -19px;
+    }
+    .hate {
+      resize: none;
+      display: inline-block;
+      width: 89%;
+    }
+    .hate-movies, .hate-books {
+      resize: none;
+    }
+    .hate-movies {
+      width: 77%;
+      display: inline-block;
+    }
+    .hate-books {
+      width: 79%;
+      display: inline-block;
+    }
+  }
+}

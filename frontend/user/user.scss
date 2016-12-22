@@ -18,8 +18,11 @@ header {
         border-radius: 28px;
       margin-right: 10px;
     }
-    .dropbox {
+    .dropdown {
       position: relative;
+      li {
+        cursor: pointer;
+      }
     }
     .enemies-btn {
       margin-right: 20px;
