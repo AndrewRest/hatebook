@@ -35,6 +35,9 @@ hateBook.factory('userService', ['$http', function ($http) {
         },
         getHatersCount: function (id) {
             return $http.get('/api/enemy-counter/'+ id);
+        },
+        addPoo: function (req) {
+            return $http.post('/api/user/poo', req);
         }
     };
 }]);
