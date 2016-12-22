@@ -1,30 +1,32 @@
+
 <div class="logo">
     <img src="../common/img/hatebook-logo.png" >
 </div>
 <div>
-    <div class="edit-title">
+    <div class="login-title">
         <h1>Edit Profile</h1>
     </div>
-    <div class="container edit-tab">
+    <div class="container login-tab">
         <div class="row row-content">
-            <div class="edit-table">
-                <form class="form-horizontal">
+            <div class="login-table ">
+                <form ng-submit="editUserInfo()" class="form-horizontal">
                     <div>
-                        <span>Name:</span>
-                        <span><input class="form-control name" placeholder="Name"/></span>
+                        <label for="name" class="title">Name</label>
+                        <input placeholder="Name" type="text" id="name" class="form-control contact" ng-model="userInfo.username">
                     </div>
                     <div>
-                        <span class='hate-label'>I hate:</span>
-                        <textarea class="form-control hate" placeholder="I hate..."/>
+                        <label for="hate" class="title">I hate</label>
+                        <textarea placeholder="I hate..." type="text" id="hate" class="form-control contact" ng-model="userInfo.iHate" ></textarea>
                     </div>
                     <div>
-                        <span class='hate-movie-label'>I hate movies:</span>
-                        <textarea class="form-control hate-movies" placeholder="I hate next movies"/>
+                        <label for="Movies" class="title">Movies:</label>
+                        <textarea placeholder="I hate next movies" type="text" id="Movies" class="form-control contact" ng-model="userInfo.hateMovies" ></textarea>
                     </div>
                     <div>
-                        <span class='hate-books-label'>I hate books:</span>
-                        <textarea class="form-control hate-books"placeholder="I hate next books"/>
+                        <label for="books" class="title">Books</label>
+                        <textarea placeholder="I hate next books" type="text" id="books" class="form-control contact" ng-model="userInfo.hateBooks" ></textarea>
                     </div>
+
                     <button  id="submit" name="submit" class="btn btn-primary login-btn">
                         Save
                     </button>
@@ -33,3 +35,4 @@
         </div>
     </div>
 </div>
+
