@@ -1,5 +1,5 @@
 hateBook.controller('enemiesList',['$scope','$rootScope','userService','$location', function($scope, $rootScope, userService, $location){
-    $rootScope.anotherUserInfo = {};
+
     $scope.enemies =[];
         userService.getEnemies().then(function(data){
             $scope.enemies = data.data;
@@ -16,6 +16,7 @@ hateBook.controller('enemiesList',['$scope','$rootScope','userService','$locatio
 
     $scope.getAnotherUser = function(id){
         userService.getOtherPage(id).then(function(data){
+            $rootScope.anotherUserInfo = {};
             $rootScope.anotherUserInfo = data.data;
             $rootScope.anotherUserInfo.enemy = true;
             console.log(data);
