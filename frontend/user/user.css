@@ -31,12 +31,18 @@ header {
       position: relative;
       left: 88%;
       width: 20%; }
+      @media (min-width: 1200px) {
+        .container-grid .left-panel .soap {
+          width: 15%; } }
     .container-grid .left-panel .name, .container-grid .left-panel .enemy, .container-grid .left-panel .not-enemies {
       text-align: center;
       margin-top: 20px; }
     .container-grid .left-panel .avatar {
       text-align: center;
-      height: auto !important; }
+      height: auto !important;
+      margin-top: 10px; }
+      .container-grid .left-panel .avatar img {
+        background: url(images/hand.png) repeat-y, #fc0 url(images/bg-right.png) repeat-y 100% 0; }
     .container-grid .left-panel .po-like {
       margin-top: 15px;
       font-size: 18px;
