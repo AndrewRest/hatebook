@@ -100,4 +100,53 @@ header {
       .container-grid .posts .po-like-posts img {
         width: 9%; }
 
+.enemies-table{
+  float:left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: #ffffff;
+  left:23%
+}
+.enemies-table .row {
+  border-bottom:solid #f5eee4 1px;
+}
+.enemies {
+  height:105px;
+  padding:12px 0
+
+}
+.image-user{
+  width:80px;
+  height:80px;
+  border:solid #f5eee4 1px;
+  margin-left:12px;
+  float:left;
+  border-radius: 50%;
+}
+.info-haters{
+  float:left;
+  margin-left: 120px;
+}
+.row h1 {
+  padding-left:10px
+}
+.get-poo {
+  float:right;
+  cursor:pointer;
+}
+.get-poo img{
+  width:80px;
+  height:80px
+}
+.enemies-table .enemies{
+  border-bottom: solid #f5eee4 1px
+}
+.enemies-table .enemies:last-of-type{
+  border-bottom: none
+}
+.info-haters p{
+  font-size: 18px;
+}
 /*# sourceMappingURL=user.css.map */
