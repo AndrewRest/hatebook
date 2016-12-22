@@ -24,3 +24,6 @@
 .payment-block .credit-card-div .pad-adjust {
     padding-top:10px;
 }
+.payment-block .payment-error{
+    color: #FF0000;
+}
