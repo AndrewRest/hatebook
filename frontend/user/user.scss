@@ -36,19 +36,25 @@ header {
   .left-panel {
     height: 440px;
     background-color: #fff;
+      .soap {
+        cursor: pointer;
+        position: relative;
+        left: 88%;
+        width: 20%;
+      }
     .name, .enemy, .not-enemies{
       text-align: center;
       margin-top: 20px;
     }
     .avatar {
       text-align: center;
-      margin-top: 20px;
       height: 130px !important;
       @media(max-width: 991px) {
         height: 100px !important;
       }
     }
     .po-like {
+      font-size: 18px;
       display: flex;
       a {
         cursor: pointer;
@@ -57,13 +63,20 @@ header {
       img {
         width: 100%;
       }
+      .po{
+        padding-top: 2px;
+      }
       span {
-        font-size: 16px;
+        font-size: 18px;
+        margin-left: 3px;
       }
       .enemies-count {
-        margin-left: 50%;
+        img {
+          width: 39%;
+        }
+        margin-left: 40%;
         @media(min-width: 768px) and (max-width: 991px) {
-          margin-left: 44%;
+          margin-left: 35%;
         }
         @media(max-width: 767px){
           margin-left: 33%;
@@ -136,19 +149,36 @@ header {
     .posts-text {
       word-break: break-all;
       margin-top: 10px;
+      width: 74%;
+      height: 100px;
+      overflow: hidden;
+      padding-top: 10px;
+      padding-left: 25px;
+      border: none;
     }
     .po-like-posts {
+      margin-top:5px;
       text-align:right;
       img {
+        margin:0;
         width: 9%;
       }
     }
   }
     .new-posts {
+      .flex-group {
+        display: flex;
+        .avatar-group {
+          width: 30%;
+        }
+      }
+      word-break: break-all;
      margin-left: 28.5%;
       height: auto;
       img {
-        width: 15%;
+        width: 70%;
+        margin-top: 10px;
+        margin-left: 10px;
       }
     }
 }

@@ -18,10 +18,10 @@
 <div class="container-grid" ng-init="getCurrentUserInfo()">
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
-        <button ng-click="cleanPoo()">clean</button>
+        <img src="../common/img/soap.png" class="soap" ng-click="cleanPoo()">
         <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
-        <div class="po-like"><span><a><img
-                src="../common/img/Poomoji.png"/></a><span>{{currentUser.pooCount || 0}}</span></span>
+        <div class="po-like"><a><img
+                src="../common/img/Poomoji.png"/></a><span class="po">{{currentUser.pooCount || 0}}</span>
             <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>0</span></span></div>
         <div class="enemies-list" ng-click="toEnemiesPg()"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
         <div class="not-enemies-list" ng-click="toNotEnemiesPg()"><a href="/#/not-enemies">Not Enemies</a></div>
@@ -40,8 +40,11 @@
         <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
     </div>
     <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts ">
-        <div><img ng-src={{post.authorAvatar}} /></div>
-        <div class="posts-text">{{post.content}}</div>
+        <div class="flex-group">
+        <div class="avatar-group"><img ng-src={{post.authorAvatar}} />
+        <div>{{currentUser.username || 'Your name'}}</div></div>
+        <textarea class="posts-text">{{post.content}}</textarea>
+        </div>
         <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>0</span></div>
     </div>
 </div>
