@@ -51,6 +51,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
                 userId: $scope.currentUser._id
             }).then(function (data) {
                 console.log(data.data);
+                $scope.newPostOnFocus = false;
                 $scope.getPosts();
             });
             $scope.newPostContent = null;

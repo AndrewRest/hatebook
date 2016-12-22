@@ -23,6 +23,10 @@ header {
       li {
         cursor: pointer;
       }
+      button {
+        border: none;
+        border-radius: 0;
+      }
     }
     .enemies-btn {
       margin-right: 20px;
@@ -34,7 +38,7 @@ header {
   padding-right: 15%;
   padding-left: 15%;
   .left-panel {
-    height: 440px;
+    height: 390px;
     background-color: #fff;
       .soap {
         cursor: pointer;
@@ -138,21 +142,30 @@ header {
       }
     }
   }
-
+.new-post-onfocus{
+  height: 150px!important;
+  transition: height 0.3s ease-out;
+}
   .posts,.new-posts {
     margin-left: 3.5%;
     background-color: #fff;
     margin-top: 20px;
-    height: 200px;
+    height: 75px;
+    transition: height 0.3s ease-out;
     textarea {
       margin-top: 10px;
       resize: none;
-      height: 150px;
-      border-radius: 4px;
+      height: 30px;
       width: 100%;
+      transition: height 0.3s ease-out;
+    }
+    .new-post-textarea-onfocus {
+      height: 100px;
+      transition: height 0.3s ease-out;
     }
     button {
       float: right;
+      border-radius: 0;
     }
     .posts-text {
       word-break: break-all;

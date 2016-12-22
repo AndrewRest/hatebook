@@ -36,8 +36,8 @@
             <div class="hates" ng-show="currentUser.iHate"><h5>I hate:</h5>{{currentUser.iHate}}</div>
         </div>
     </div>
-    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7">
-        <textarea ng-model="newPostContent"></textarea>
+    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-class="{'new-post-onfocus' : newPostOnFocus}">
+        <textarea ng-model="newPostContent" placeholder="New post" ng-class="{'new-post-textarea-onfocus' : newPostOnFocus}" ng-focus="newPostOnFocus = true"></textarea>
         <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
     </div>
     <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts track by $index">
