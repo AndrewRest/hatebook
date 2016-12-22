@@ -100,7 +100,8 @@ app.post('/api/post', authentication.ensureAuthenticated, function (req, res) {
         content: req.body.content,
         userId: req.body.userId,
         pooCount: 0,
-        attachment: req.body.attachment || null
+        attachment: req.body.attachment || null,
+        createdOn: new Date()
     };
     db.postCollection().insert(post, function (err, result) {
         if (!err) {
@@ -258,7 +259,11 @@ app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res
 });
 
 app.get('/api/user/posts/:userId', authentication.ensureAuthenticated, function (req, res) {
-    db.postCollection().find({userId:req.params.userId}).toArray(function(err, docs) {
+    db.postCollection().find(
+            {userId:req.params.userId},
+            {sort: [['createdOn','desc']]}
+        )
+    .toArray(function(err, docs) {
         if(!err) {
             console.log("posts successfully received");
             res.send(docs);
