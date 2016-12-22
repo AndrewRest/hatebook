@@ -28,7 +28,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     };
     $scope.addPoo = function() {
         if($scope.loggedInUser.pooCredits > 0){
-            $scope.hgt += 10;
+            $scope.hgt += 0.5;
             console.log($scope.height);
             userService.addPoo({userId:$scope.currentUser._id}).then(function () {
                 $scope.currentUser.pooCount += 1;

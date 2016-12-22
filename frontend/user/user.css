@@ -50,8 +50,10 @@ header {
       text-align: center;
       width: 100px;
       position: absolute;
-      top: 60px;
+      /*  top: 60px;
+        left: 38px;*/
       left: 38px;
+      bottom: 230px;
       z-index: 10;
       opacity: 0.1;
       background-color: #f0ad4e;
