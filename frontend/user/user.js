@@ -15,6 +15,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
         userService.getPosts($scope.currentUser._id).then(function(data) {
             console.log(data.data);
             $scope.userPosts = data.data;
+
         });
     };
 
@@ -37,6 +38,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
                 console.log(data.data);
                 $scope.getPosts();
             });
+            $scope.newPostContent = '';
         }
     };
     $scope.toEnemiesPg = function(){
