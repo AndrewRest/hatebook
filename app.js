@@ -240,13 +240,19 @@ app.post('/api/post/poo', authentication.ensureAuthenticated, function (req, res
                 db.postCollection().findOne({_id: new ObjectID(req.body.postId)}, function (err, post) {
                     if (!err) {
                         console.log("post poo count received");
-                        res.send({_id: post._id,pooCount: post.pooCount});
+                        if(post) {
+                            res.send({_id: post._id, pooCount: post.pooCount});
+                        } else {
+                            res.status(404).json({msg: "Post doesn't exist"});
+                        }
                     } else {
                         console.log(err);
+                        res.status(500).json(err);
                     }
                 });
             } else {
                 console.log(err);
+                res.status(500).json(err);
             }
         });
 });
