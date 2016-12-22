@@ -15,7 +15,7 @@
         </span>
     </span>
 </header>
-<div class="container-grid ">
+<div class="container-grid" ng-init="getCurrentUserInfo()">
        <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
            <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
            <div class="avatar"><img width='80%' src="default-user-avatar.jpg"/></div>
@@ -32,7 +32,7 @@
                 <div class="hates" ng-show="currentUser.iHate"><h5>I hate:</h5>{{currentUser.iHate}}</div>
             </div>
         </div>
-    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7">
+    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts">
         <div class="posts-text">fasdfjadshfkjhsdafkjhasdfkjashdfkjhsadfkjhsafsdafhasdkghoaksghoagoasdghokasdghasgashdgjsadhfpjhsdapfjhasdjfkhsdapkfjhasdkjfhaskdjd</div>
         <div class="po-like-posts"><a href=""><img src="../common/img/Poomoji.png"/></a><span>0</span></div>
     </div>
