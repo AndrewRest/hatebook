@@ -1,3 +1,35 @@
+.edit-title {
+  font-size: 32px;
+  color: #3c92c8;
+  text-align: center; }
 
+.edit-tab .edit-table {
+  width: 520px;
+  color: #a2a2a2;
+  margin: 18px auto 50px;
+  padding: 3px 45px;
+  background-color: #f7f6f6;
+  border: 2px solid #d0d0d0;
+  min-height: 270px; }
+  .edit-tab .edit-table .form-horizontal div {
+    margin-top: 15px; }
+  .edit-tab .edit-table .name {
+    display: inline-block;
+    width: 89%; }
+  .edit-tab .edit-table .hate-label, .edit-tab .edit-table .hate-movie-label, .edit-tab .edit-table .hate-books-label {
+    position: relative;
+    top: -19px; }
+  .edit-tab .edit-table .hate {
+    resize: none;
+    display: inline-block;
+    width: 89%; }
+  .edit-tab .edit-table .hate-movies, .edit-tab .edit-table .hate-books {
+    resize: none; }
+  .edit-tab .edit-table .hate-movies {
+    width: 77%;
+    display: inline-block; }
+  .edit-tab .edit-table .hate-books {
+    width: 79%;
+    display: inline-block; }
 
 /*# sourceMappingURL=edit.css.map */
