@@ -14,6 +14,9 @@ hateBook.factory('userService', ['$http', function ($http) {
         },
         getPosts: function (id) {
             return $http.get('/api/user/posts/' + id);
+        },
+        getNotEnemies:function(){
+            return $http.get('/api/not-enemies')
         }
     };
 }]);
