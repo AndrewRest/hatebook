@@ -1,5 +1,5 @@
 'use strict';
-hateBook.controller('userCtrl', ['$scope', '$rootScope','userService','$window',  function($scope, $rootScope,userService, $window) {
+hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
     /*$('.dropdown-toggle').dropdown()*/
     console.log('user');
     $scope.getCurrentUserInfo = function () {
@@ -18,7 +18,11 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService','$window',
     };
 
     $scope.toEdit = function() {
-        $window.location.href = '/#/edit';
+        $location.path('/edit');
         console.log('asdasfasd');
     };
+
+    $scope.cleanPoo = function () {
+        $location.path('/clean');
+    }
 }]);
