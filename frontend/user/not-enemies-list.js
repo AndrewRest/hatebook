@@ -15,5 +15,12 @@ hateBook.controller('notEnamiesController',['$scope','userService','$window', fu
             console.log(err)
         });
     };
+    $scope.logout = function(){
+        userService.logout().then(function(){
+            $location.path('/login')
+        }, function(err){
+            console.log(err)
+        })
+    }
 
 }]);
