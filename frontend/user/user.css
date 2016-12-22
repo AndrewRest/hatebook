@@ -46,7 +46,7 @@ header {
       margin-top: 10px; }
     .container-grid .left-panel .poo-div {
       position: relative;
-      top: 0;
+      top: 20px;
       opacity: 0.1;
       background-color: #f0ad4e; }
     .container-grid .left-panel .po-like {
