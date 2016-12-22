@@ -37,10 +37,10 @@
     </div>
     <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7">
         <textarea ng-model="newPostContent"></textarea>
-        <button ng-click="createNewPost(newPostContent)">POST</button>
+        <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
     </div>
     <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts">
         <div class="posts-text">{{post.content}}</div>
-        <div class="po-like-posts"><a href=""><img src="../common/img/Poomoji.png"/></a><span>0</span></div>
+        <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>0</span></div>
     </div>
 </div>
