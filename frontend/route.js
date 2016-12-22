@@ -4,7 +4,7 @@ hateBook.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/login', {
         templateUrl: '/login/login.html',
         controller: 'loginCtrl'
-    })
+        })
         .when('/signup', {
             templateUrl: '/login/sign-up.html',
             controller: 'signUpController'
@@ -21,10 +21,9 @@ hateBook.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/user/not-enemies-list.html',
             controller: 'notEnamiesController'
         })
-    ;
-    $routeProvider.when('/clean', {
+        .when('/clean', {
         controller: 'userCtrl'
-    })
+        })
         .when('/clean', {
             templateUrl: '/payment/cleanPoo.html',
             controller: 'paymentCtrl'
