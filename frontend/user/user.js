@@ -31,5 +31,12 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.cleanPoo = function () {
         $location.path('/clean');
+    };
+
+    $scope.createNewPost = function (content) {
+        userService.createPost({authorName:$scope.currentUser.username, content:content, userId:$scope.currentUser._id}).then(function(data) {
+            console.log(data.data);
+            $scope.getPosts();
+        });
     }
 }]);
