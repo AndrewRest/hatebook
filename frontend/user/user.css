@@ -32,17 +32,17 @@ header {
     .container-grid .left-panel .avatar {
       text-align: center;
       margin-top: 20px;
-      height: 170px !important; }
+      height: 130px !important; }
       @media (max-width: 991px) {
         .container-grid .left-panel .avatar {
-          height: 130px !important; } }
+          height: 100px !important; } }
     .container-grid .left-panel .po-like {
       display: flex; }
       .container-grid .left-panel .po-like a {
         cursor: pointer;
         text-decoration: none; }
       .container-grid .left-panel .po-like img {
-        width: 15%; }
+        width: 100%; }
       .container-grid .left-panel .po-like span {
         font-size: 16px; }
       .container-grid .left-panel .po-like .enemies-count {
@@ -112,5 +112,7 @@ header {
   .container-grid .new-posts {
     margin-left: 28.5%;
     height: auto; }
+    .container-grid .new-posts img {
+      width: 15%; }
 
 /*# sourceMappingURL=user.css.map */
