@@ -55,7 +55,8 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
             userService.createPost({
                 authorName: $scope.loggedInUser.username,
                 content: content,
-                userId: $scope.currentUser._id
+                userId: $scope.currentUser._id,
+                authorAvatar: $scope.loggedInUser.avatar
             }).then(function (data) {
                 console.log(data.data);
                 $scope.newPostOnFocus = false;
