@@ -1,39 +1,47 @@
+
 'use strict';
-hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
-
-
-    $scope.isMyPage = false;
-    $scope.hgt = 0;
-
+hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+    $scope.userID = $rootScope.userId;
+    $scope.isEnemy = false;
+    $scope.getUsrInfo = function(){
+        userService.getOtherPage($scope.userID).then(function(data){
+        $scope.usrInfo = data.data;
+            $scope.yourInfo.enemies.forEach(function(enemy){
+                if($scope.userID == enemy){
+                    $scope.isEnemy = true;
+                }
+            });
+            $scope.getPosts();
+            console.log('else',$scope.usrInfo );
+        }, function(err){
+            console.log(err);
+            $location.path('/login');
+        })
+    };
+    $scope.getUserPage = function(){
+        $location.path('/user');
+    };
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function (data) {
-            $scope.loggedInUser = data.data;
-            if (!$scope.currentUser) {
-                $scope.currentUser = $scope.loggedInUser;
-                $scope.isMyPage = true;
-            }
-            $scope.getPosts();
-            userService.getHatersCount($scope.currentUser._id).then(function (result) {
-                $scope.hatersCount = result.data.haters;
-            });
+            $scope.yourInfo = data.data;
         }, function (err) {
             $location.path('/login');
             console.log(err);
         });
     };
-
+    $scope.getCurrentUserInfo();
     $scope.getPosts = function () {
-        userService.getPosts($scope.currentUser._id).then(function(data) {
+        userService.getPosts($scope.userID).then(function(data) {
             $scope.userPosts = data.data;
         });
     };
     $scope.addPoo = function() {
-        if($scope.loggedInUser.pooCredits > 0){
+        if($scope.usrInfo.pooCredits > 0){
             $scope.hgt += 10;
             console.log($scope.height);
-            userService.addPoo({userId:$scope.currentUser._id}).then(function () {
-                $scope.currentUser.pooCount += 1;
-                $scope.loggedInUser.pooCredits -= 1;
+            userService.addPoo({userId:$scope.userID}).then(function () {
+                $scope.usrInfo.pooCount += 1;
+                $scope.usrInfo.pooCredits -= 1;
             })
         }
     };
@@ -57,9 +65,9 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.createNewPost = function (content) {
         if (content) {
             userService.createPost({
-                authorName: $scope.loggedInUser.username,
+                authorName: $scope.usrInfo.username,
                 content: content,
-                userId: $scope.currentUser._id
+                userId: $scope.userID
             }).then(function (data) {
                 console.log(data.data);
                 $scope.newPostOnFocus = false;
@@ -92,7 +100,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.makeEnemy = function (enemy) {
         userService.addEnemy(enemy._id).then(function(){
-            $scope.currentUser.enemy = true;
+            $scope.usrInfo.enemy = true;
         }, function(err){
             console.log(err)
         });

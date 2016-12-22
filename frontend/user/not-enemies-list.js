@@ -36,7 +36,7 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
         userService.getOtherPage(user._id).then(function(data){
                 $rootScope.anotherUserInfo = data.data;
                 console.log(data);
-                $location.path('/user');
+                $location.path('/another-user');
             }, function(err){
                 console.log(err)
             }

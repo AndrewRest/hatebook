@@ -25,6 +25,10 @@ hateBook.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/payment/cleanPoo.html',
             controller: 'paymentCtrl'
         })
+        .when('/another-user', {
+        templateUrl: '/user/anotherUser.html',
+        controller: 'anotherUser'
+    })
         .when('/edit', {
             templateUrl: '/edit/edit.html',
             controller: 'editCtrl'
