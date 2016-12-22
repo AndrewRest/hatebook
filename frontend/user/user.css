@@ -41,16 +41,23 @@ header {
       text-align: center;
       margin-top: 20px; }
     .container-grid .left-panel .avatar {
+      position: absolute;
       text-align: center;
       height: auto !important;
-      margin-top: 10px; }
+      margin-top: 10px;
+      z-index: 1; }
     .container-grid .left-panel .poo-div {
-      position: relative;
-      top: 20px;
+      text-align: center;
+      width: 100px;
+      position: absolute;
+      top: 60px;
+      left: 38px;
+      z-index: 10;
       opacity: 0.1;
-      background-color: #f0ad4e; }
+      background-color: #f0ad4e;
+      max-height: 120px; }
     .container-grid .left-panel .po-like {
-      margin-top: 15px;
+      margin-top: 150px;
       font-size: 18px;
       display: flex; }
       .container-grid .left-panel .po-like a {

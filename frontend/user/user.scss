@@ -54,18 +54,25 @@ header {
       margin-top: 20px;
     }
     .avatar {
+      position: absolute;
       text-align: center;
       height: auto !important;
       margin-top: 10px;
+      z-index: 1;
     }
     .poo-div {
-      position: relative;
-      top: 20px;
+      text-align: center;
+      width: 100px;
+      position: absolute;
+      top: 60px;
+      left: 38px;
+      z-index: 10;
       opacity :0.1;
       background-color: #f0ad4e;
+      max-height: 120px;
     }
     .po-like {
-      margin-top: 15px;
+      margin-top: 150px;
       font-size: 18px;
       display: flex;
       a {
