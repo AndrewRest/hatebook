@@ -35,6 +35,10 @@
             <div class="hates" ng-show="currentUser.iHate"><h5>I hate:</h5>{{currentUser.iHate}}</div>
         </div>
     </div>
+    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7">
+        <textarea ng-model="newPostContent"></textarea>
+        <button ng-click="createNewPost(newPostContent)">POST</button>
+    </div>
     <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts">
         <div class="posts-text">{{post.content}}</div>
         <div class="po-like-posts"><a href=""><img src="../common/img/Poomoji.png"/></a><span>0</span></div>
