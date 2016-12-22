@@ -49,17 +49,27 @@ header {
       @media (max-width: 767px) {
         .container-grid .left-panel .po-like .enemies-count {
           margin-left: 33%; } }
-    .container-grid .left-panel .enemies-list, .container-grid .left-panel .not-enemies-list {
+    .container-grid .left-panel .enemies-list {
       cursor: pointer;
-      text-align: center;
       margin-top: 20px;
-      border-radius: 5px; }
+      border-radius: 1px;
+      padding: 5px 0 5px 3px; }
+    .container-grid .left-panel .not-enemies-list {
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 1px;
+      padding: 5px 0 5px 3px; }
     .container-grid .left-panel .enemies-list:hover {
       text-decoration: none;
       background-color: #f5eee4; }
     .container-grid .left-panel .not-enemies-list:hover {
       text-decoration: none;
       background-color: #f5eee4; }
+    .container-grid .left-panel a {
+      color: #000; }
+    .container-grid .left-panel a:hover {
+      color: #000;
+      text-decoration: none; }
   .container-grid .right-panel {
     margin-left: 3.5%;
     background-color: #fff;

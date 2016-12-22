@@ -66,11 +66,17 @@ header {
         }
       }
     }
-    .enemies-list, .not-enemies-list{
+    .enemies-list {
       cursor: pointer;
-      text-align: center;
       margin-top: 20px;
-      border-radius: 5px;
+      border-radius: 1px;
+      padding: 5px 0 5px 3px;
+    }
+    .not-enemies-list{
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 1px;
+      padding: 5px 0 5px 3px;
     }
     .enemies-list:hover {
       text-decoration: none;
@@ -79,6 +85,13 @@ header {
     .not-enemies-list:hover {
       text-decoration: none;
       background-color:  #f5eee4;
+    }
+    a {
+      color: #000;
+    }
+    a:hover {
+      color: #000;
+      text-decoration: none;
     }
   }
   .right-panel {
