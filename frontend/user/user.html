@@ -18,7 +18,7 @@
 <div class="container-grid" ng-init="getCurrentUserInfo()">
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
-        <button ng-click="cleanPoo()">clean</button>
+        <img src="../common/img/soap.png" class="soap" ng-click="cleanPoo()">
         <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
         <div class="po-like"><a><img
                 src="../common/img/Poomoji.png"/></a><span class="po">{{currentUser.pooCount || 0}}</span>

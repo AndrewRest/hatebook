@@ -36,13 +36,18 @@ header {
   .left-panel {
     height: 440px;
     background-color: #fff;
+      .soap {
+        cursor: pointer;
+        position: relative;
+        left: 88%;
+        width: 20%;
+      }
     .name, .enemy, .not-enemies{
       text-align: center;
       margin-top: 20px;
     }
     .avatar {
       text-align: center;
-      margin-top: 20px;
       height: 130px !important;
       @media(max-width: 991px) {
         height: 100px !important;
