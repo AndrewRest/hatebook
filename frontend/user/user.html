@@ -40,7 +40,7 @@
         <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
     </div>
     <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts ">
-        <div><img src="../../pictures/default-user-avatar.jpg" /></div>
+        <div><img ng-src={{post.authorAvatar}} /></div>
         <div class="posts-text">{{post.content}}</div>
         <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>0</span></div>
     </div>
