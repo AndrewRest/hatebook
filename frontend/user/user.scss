@@ -49,6 +49,7 @@ header {
       }
     }
     .po-like {
+      font-size: 18px;
       display: flex;
       a {
         cursor: pointer;
@@ -57,8 +58,12 @@ header {
       img {
         width: 100%;
       }
+      .po{
+        padding-top: 2px;
+      }
       span {
-        font-size: 16px;
+        font-size: 18px;
+        margin-left: 3px;
       }
       .enemies-count {
         img {
@@ -147,8 +152,10 @@ header {
       border: none;
     }
     .po-like-posts {
+      margin-top:5px;
       text-align:right;
       img {
+        margin:0;
         width: 9%;
       }
     }
@@ -166,6 +173,7 @@ header {
       img {
         width: 70%;
         margin-top: 10px;
+        margin-left: 10px;
       }
     }
 }

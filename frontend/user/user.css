@@ -37,14 +37,18 @@ header {
         .container-grid .left-panel .avatar {
           height: 100px !important; } }
     .container-grid .left-panel .po-like {
+      font-size: 18px;
       display: flex; }
       .container-grid .left-panel .po-like a {
         cursor: pointer;
         text-decoration: none; }
       .container-grid .left-panel .po-like img {
         width: 100%; }
+      .container-grid .left-panel .po-like .po {
+        padding-top: 2px; }
       .container-grid .left-panel .po-like span {
-        font-size: 16px; }
+        font-size: 18px;
+        margin-left: 3px; }
       .container-grid .left-panel .po-like .enemies-count {
         margin-left: 40%; }
         .container-grid .left-panel .po-like .enemies-count img {
@@ -114,8 +118,10 @@ header {
       padding-left: 25px;
       border: none; }
     .container-grid .posts .po-like-posts, .container-grid .new-posts .po-like-posts {
+      margin-top: 5px;
       text-align: right; }
       .container-grid .posts .po-like-posts img, .container-grid .new-posts .po-like-posts img {
+        margin: 0;
         width: 9%; }
   .container-grid .new-posts {
     word-break: break-all;
@@ -127,6 +133,7 @@ header {
         width: 30%; }
     .container-grid .new-posts img {
       width: 70%;
-      margin-top: 10px; }
+      margin-top: 10px;
+      margin-left: 10px; }
 
 /*# sourceMappingURL=user.css.map */
