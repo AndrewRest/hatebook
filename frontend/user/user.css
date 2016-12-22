@@ -121,7 +121,7 @@ header {
   width:80px;
   height:80px;
   border:solid #f5eee4 1px;
-  margin-left:12px;
+  margin-left:20px;
   float:left;
   border-radius: 50%;
 }
@@ -130,7 +130,7 @@ header {
   margin-left: 120px;
 }
 .row h1 {
-  padding-left:10px
+  padding-left:20px
 }
 .get-poo {
   float:right;
@@ -148,5 +148,15 @@ header {
 }
 .info-haters p{
   font-size: 18px;
+}
+.get-poo .btn{
+  margin-right: 12px;
+  padding: 14px 14px;
+  font-size: 18px;
+  margin-top: 12px;
+}
+.image-user img{
+  width:80px;
+  height:80px
 }
 /*# sourceMappingURL=user.css.map */
