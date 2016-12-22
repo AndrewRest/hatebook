@@ -7,7 +7,7 @@ hateBook.factory('userService', ['$http', function ($http) {
             return $http.post('api/user/poo', id)
         },
         getOtherPage: function (id) {
-            return $http.get('api/user/:id')
+            return $http.get('api/user/' +id)
         },
         getUser: function () {
             return $http.get('api/current-user');
@@ -26,6 +26,9 @@ hateBook.factory('userService', ['$http', function ($http) {
         },
         logout: function(){
             return $http.get('/api/logout')
+        },
+        addToEnemies: function(id){
+            return $http.get('/api/add-enemy/' + id);
         }
     };
 }]);

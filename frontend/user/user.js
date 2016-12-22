@@ -1,5 +1,6 @@
 'use strict';
 hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+   /* $scope.currentUser = $rootScope.anotherUserInfo;*/
     userService.getUser().then(function(data) {
         console.log(data.data);
     }, function(err){
@@ -23,7 +24,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.getPosts = function () {
         userService.getPosts($scope.currentUser._id).then(function(data) {
             $scope.userPosts = data.data;
-
         });
     };
     $scope.addPoo = function() {
@@ -68,5 +68,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
         }, function(err){
             console.log(err)
         })
-    }
+    };
+
 }]);

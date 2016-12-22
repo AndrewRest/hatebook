@@ -21,7 +21,7 @@
     </div>
     <div class="row enemies" ng-repeat="enemy in enemies">
         <div class="image-user">
-    <img ng-src="{{enemy.avatar}}"/>
+    <div ng-click="getAnotherUser(enemy._id)"><img ng-src="{{enemy.avatar}}"/></div>
         </div>
         <div class="info-haters">
             <p>{{enemy.username}}</p>
