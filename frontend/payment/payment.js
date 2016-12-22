@@ -11,9 +11,12 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
     $scope.paymentForm = false;
 
     $scope.showPaymentForm = function () {
-        if($scope.pooToClean > 0){
+        if ($scope.pooToClean > 0) {
             $scope.paymentForm = true;
-        } else {
+        } else if ($scope.pooToClean < 0) {
+            $scope.paymentErrorMessage = 'Who do you want to cheat, asshole?'
+        }
+        else {
             $scope.paymentErrorMessage = 'Provide poo count to clean!';
         }
     };
