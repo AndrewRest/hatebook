@@ -8,6 +8,7 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
     };
 
     $scope.pooToClean = 0;
+    $scope.pooToBuy = 0;
     $scope.paymentForm = false;
 
     $scope.showPaymentForm = function () {
@@ -29,7 +30,14 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
         });
     };
 
-    $scope.cancelCleaning = function () {
+    $scope.cleanPoo = function (pooCount) {
+        paymentService.cleanPoo({cleanupCount:pooCount}).then(function (data) {
+            console.log(data);
+            $location.path('/user');
+        });
+    };
+
+    $scope.cancel = function () {
         $location.path('/user');
     }
 }]);
