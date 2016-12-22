@@ -36,19 +36,23 @@ header {
   .left-panel {
     height: 440px;
     background-color: #fff;
+      .soap {
+        cursor: pointer;
+        position: relative;
+        left: 88%;
+        width: 20%;
+      }
     .name, .enemy, .not-enemies{
       text-align: center;
       margin-top: 20px;
     }
     .avatar {
       text-align: center;
-      margin-top: 20px;
-      height: 130px !important;
-      @media(max-width: 991px) {
-        height: 100px !important;
-      }
+      height: auto !important;
     }
     .po-like {
+      margin-top: 15px;
+      font-size: 18px;
       display: flex;
       a {
         cursor: pointer;
@@ -57,8 +61,12 @@ header {
       img {
         width: 100%;
       }
+      .po{
+        padding-top: 2px;
+      }
       span {
-        font-size: 16px;
+        font-size: 18px;
+        margin-left: 3px;
       }
       .enemies-count {
         img {
@@ -147,8 +155,10 @@ header {
       border: none;
     }
     .po-like-posts {
+      margin-top:5px;
       text-align:right;
       img {
+        margin:0;
         width: 9%;
       }
     }
@@ -166,6 +176,7 @@ header {
       img {
         width: 70%;
         margin-top: 10px;
+        margin-left: 10px;
       }
     }
 }
