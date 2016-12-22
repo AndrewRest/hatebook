@@ -13,7 +13,7 @@ hateBook.factory('userService', ['$http', function ($http) {
             return $http.get('api/current-user');
         },
         getPosts: function (id) {
-            return $http.get('/api/user/posts/'+ id);
+            return $http.get('/api/user/posts/' + id);
         }
     };
 }]);
