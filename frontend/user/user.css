@@ -8,6 +8,10 @@ header {
     font-family: 'Comic Sans MS'; }
   header .right-header {
     text-align: right; }
+    header .right-header img {
+      width: 6%;
+      border-radius: 28px;
+      margin-right: 10px; }
     header .right-header .dropbox {
       position: relative; }
     header .right-header .enemies-btn {

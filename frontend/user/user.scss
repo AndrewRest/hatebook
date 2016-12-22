@@ -13,6 +13,11 @@ header {
   }
   .right-header {
     text-align: right;
+    img {
+        width: 6%;
+        border-radius: 28px;
+      margin-right: 10px;
+    }
     .dropbox {
       position: relative;
     }
