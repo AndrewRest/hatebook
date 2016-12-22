@@ -17,7 +17,8 @@ hateBook.controller('enemiesList',['$scope','$rootScope','userService','$locatio
     $scope.getAnotherUser = function(id){
         userService.getOtherPage(id).then(function(data){
             $rootScope.anotherUserInfo = data.data;
-            console.log(data)
+            console.log(data);
+            $location.path('/user');
             }, function(err){
                 console.log(err)
             }

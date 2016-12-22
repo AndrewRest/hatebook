@@ -1,20 +1,17 @@
 'use strict';
 hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
-   /* $scope.currentUser = $rootScope.anotherUserInfo;*/
-    userService.getUser().then(function(data) {
-        console.log(data.data);
-    }, function(err){
-        if(err.status == 401){
-            $location.path('/login');
-        }
-        console.log(err);
-        }
-    );
+    $scope.currentUser = $rootScope.anotherUserInfo;
+    $scope.isMyPage = false;
     $scope.hgt = 0;
+    
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function(data) {
-            $scope.currentUser = data.data;
-            $scope.getPosts();
+            $scope.loggedInUser = data.data;
+            if(!$scope.currentUser){
+                $scope.currentUser = $scope.loggedInUser;
+                $scope.isMyPage = true;
+            }
+                $scope.getPosts();
         }, function(err){
             $location.path('/login');
             console.log(err);
@@ -46,14 +43,14 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.createNewPost = function (content) {
         if (content) {
             userService.createPost({
-                authorName: $scope.currentUser.username,
+                authorName: $scope.loggedInUser.username,
                 content: content,
                 userId: $scope.currentUser._id
             }).then(function (data) {
                 console.log(data.data);
                 $scope.getPosts();
             });
-            $scope.newPostContent = '';
+            $scope.newPostContent = null;
         }
     };
     $scope.toEnemiesPg = function(){

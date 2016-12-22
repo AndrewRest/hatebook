@@ -18,15 +18,15 @@
 <div class="container-grid" ng-init="getCurrentUserInfo()">
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{currentUser.username || 'Your name'}}</h4></div>
-        <img src="../common/img/soap.png" class="soap" ng-click="cleanPoo()">
+        <img src="../common/img/soap.png" class="soap" ng-click="cleanPoo()" ng-show="isMyPage">
         <div class="avatar"><img width='80%' ng-src="{{currentUser.avatar}}"/></div>
         <div class="poo-div" ng-style="{height:hgt+'px'}"></div>
         <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png"/></a><span class="po">{{currentUser.pooCount || 0}}</span>
             <span class="enemies-count"><img src="../common/img/default-user-avatar.png"/><span>0</span></span></div>
         <div class="enemies-list" ng-click="toEnemiesPg()"><a href="/#/enemies-list">Enemies: {{currentUser.enemies.length || 0}}</a></div>
-        <div class="not-enemies-list" ng-click="toNotEnemiesPg()"><a href="/#/not-enemies">Not Enemies</a></div>
-        <div class="not-enemies-list"><a>Add to Enemies</a></div>
-        <div class="not-enemies-list" ng-click="buyPoo()"><a>My credits:</a>{{currentUser.pooCredits || 0}}</div>
+        <div class="not-enemies-list" ng-click="toNotEnemiesPg()" ng-show="isMyPage"><a href="/#/not-enemies">Not Enemies</a></div>
+        <div class="not-enemies-list" ng-hide="isMyPage"><a>Add to Enemies</a></div>
+        <div class="not-enemies-list" ng-click="buyPoo()" ng-show="isMyPage"><a>My credits:</a>{{currentUser.pooCredits || 0}}</div>
     </div>
     <div class="right-panel col-lg-6 col-md-7 col-sm-7 col-xs-7">
         <div class="user-info"><h4>User Info</h4>
@@ -43,9 +43,9 @@
     <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts ">
         <div class="flex-group">
         <div class="avatar-group"><img ng-src={{post.authorAvatar}} />
-        <div>{{currentUser.username || 'Your name'}}</div></div>
+        <div>{{post.authorName || 'some name'}}</div></div>
         <textarea class="posts-text">{{post.content}}</textarea>
         </div>
-        <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>0</span></div>
+        <div class="po-like-posts"><a href=""><img src="../common/img/poo-icon.png"/></a><span>{{post.pooCount || 0}}</span></div>
     </div>
 </div>
