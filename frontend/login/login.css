@@ -63,3 +63,6 @@ span.error-mess{
     text-decoration: underline;
     color: #1f6377;
 }
+textarea.form-control {
+    resize: none;
+}

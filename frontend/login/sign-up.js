@@ -1,4 +1,4 @@
-hateBook.controller('signUpController', ['$scope', '$rootScope','loginService','$window', function ($scope, $rootScope, loginService, $window) {
+hateBook.controller('signUpController', ['$scope', '$rootScope','loginService','$location', function ($scope, $rootScope, loginService, $location) {
     $scope.user = {
         email: "",
         password: ""
@@ -6,7 +6,7 @@ hateBook.controller('signUpController', ['$scope', '$rootScope','loginService','
 
     $scope.signUp = function () {
         loginService.signUp($scope.user).then(function (data) {
-            $window.location.href='/#/login';
+                $location.path('/login');
                 console.log(data)
             },
             function (err) {

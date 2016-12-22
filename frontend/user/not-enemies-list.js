@@ -1,16 +1,15 @@
-hateBook.controller('notEnamiesController',['$scope','userService','$window', function($scope, userService, $window){
+hateBook.controller('notEnamiesController',['$scope','userService','$location', function($scope, userService, $location){
     $scope.notEnemies =[];
     userService.getNotEnemies().then(function(data){
         $scope.notEnemies = data.data;
-        console.log(data.data);
-    },function(err){
-        $window.location.href='/#/login';
+    },function(err){if(err.status == 401){
+        $location.path('/login');
+    }
         console.log(err);
     });
     $scope.getToEnemies = function(id){
         console.log('id', id);
         userService.addToEnemies(id).then(function(data){
-            console.log(data)
         }, function(err){
             console.log(err)
         });

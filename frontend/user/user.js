@@ -3,13 +3,14 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     userService.getUser().then(function(data) {
         console.log(data.data);
     }, function(err){
-        $location.path('/login');
+        if(err.status == 401){
+            $location.path('/login');
+        }
         console.log(err);
         }
     );
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function(data) {
-            console.log(data.data);
             $scope.currentUser = data.data;
             $scope.getPosts();
         }, function(err){
@@ -20,7 +21,6 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.getPosts = function () {
         userService.getPosts($scope.currentUser._id).then(function(data) {
-            console.log(data.data);
             $scope.userPosts = data.data;
 
         });
@@ -52,7 +52,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     };
     $scope.toNotEnemiesPg = function(){
         $location.path('/not-enemies')
-    }
+    };
     $scope.logout = function(){
         userService.logout().then(function(){
             $location.path('/login')

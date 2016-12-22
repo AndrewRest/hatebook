@@ -21,6 +21,9 @@ hateBook.factory('userService', ['$http', function ($http) {
         getNotEnemies:function(){
             return $http.get('/api/not-enemies')
         },
+        updateInfo: function(data){
+            return $http.put('/api/user/update-info', data)
+        },
         logout: function(){
             return $http.get('/api/logout')
         }
