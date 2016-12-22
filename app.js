@@ -149,10 +149,9 @@ app.get('/api/enemies', authentication.ensureAuthenticated, function(req, res) {
 });
 
 app.get('/api/not-enemies', authentication.ensureAuthenticated, function(req, res) {
-    var enemies = req.user.enemies;
-    if(!enemies) {
-        res.json([]);
-        return;
+    var enemies = [];
+    if(req.user.enemies){
+        enemies = req.user.enemies;
     }
     //enemy to your-self
     enemies.push(req.user._id);
