@@ -16,19 +16,19 @@
         </span>
     </span>
 </header>
-<div class="container enemies-table">
+<div class="col-xs-7  enemies-table">
     <div class="row">
         <h1>Enemies</h1>
     </div>
-    <div class="row enemies" ng-repeat="">
+    <div class="row enemies" ng-repeat="enemy in enemies">
         <div class="image-user">
     <img ng-src=""/>
         </div>
         <div class="info-haters">
-            <p>some name</p>
-            <p>some hate</p>
+            <p>{{enemy.username}}</p>
+            <p>{{enemy.iHate}}</p>
         </div>
-        <div class="get-poo">
+        <div class="get-poo" ng-click="getEnemies(enemy._id)">
             <img src="../common/img/poo-icon.png"/>
         </div>
     </div>

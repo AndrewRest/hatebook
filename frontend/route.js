@@ -15,7 +15,7 @@ hateBook.config(['$routeProvider', function( $routeProvider) {
     });
     $routeProvider.when('/enemies-list', {
         templateUrl:'/user/enemies-list.html',
-        controller:'userCtrl'
+        controller:'enemiesList'
     });
     $routeProvider.when('/clean', {
         templateUrl:'/payment/cleanPoo.html',
