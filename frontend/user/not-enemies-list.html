@@ -18,18 +18,18 @@
 </header>
 <div class="col-xs-7  enemies-table">
     <div class="row">
-        <h1>Enemies</h1>
+        <h1>Not Enemies</h1>
     </div>
-    <div class="row enemies" ng-repeat="enemy in enemies">
+    <div class="row enemies" ng-repeat="notEnemy in notEnemies">
         <div class="image-user">
-    <img ng-src="{{enemy.avatar}}"/>
+            <img ng-src="{{notEnemy.avatar}}"/>
         </div>
         <div class="info-haters">
-            <p>{{enemy.username}}</p>
-            <p>{{enemy.iHate}}</p>
+            <p>{{notEnemy.username}}</p>
+            <p>{{notEnemy.iHate}}</p>
         </div>
-        <div class="get-poo" ng-click="getEnemies(enemy._id)">
-            <img src="../common/img/poo-icon.png"/>
+        <div class="get-poo" ng-click="getToEnemies(notEnemy._id)">
+            <button class="btn">Enemy!</button>
         </div>
     </div>
 </div>
