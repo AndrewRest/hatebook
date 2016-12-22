@@ -29,6 +29,9 @@ header {
   .container-grid .left-panel {
     height: 390px;
     background-color: #fff; }
+    @media (max-width: 1199px) {
+      .container-grid .left-panel {
+        height: 420px; } }
     .container-grid .left-panel .soap {
       cursor: pointer;
       position: relative;
@@ -48,16 +51,16 @@ header {
       z-index: 1; }
     .container-grid .left-panel .poo-div {
       text-align: center;
-      width: 100px;
+      width: 62%;
       position: absolute;
       /*  top: 60px;
         left: 38px;*/
-      left: 38px;
-      bottom: 230px;
+      left: 45px;
+      bottom: 207px;
       z-index: 10;
-      opacity: 0.1;
-      background-color: #f0ad4e;
-      max-height: 100px; }
+      opacity: 0.4;
+      background: url(../common/img/background.png) repeat-y 100% 0;
+      max-height: 123px; }
     .container-grid .left-panel .po-like {
       margin-top: 150px;
       font-size: 18px;
@@ -72,6 +75,9 @@ header {
       .container-grid .left-panel .po-like span {
         font-size: 18px;
         margin-left: 3px; }
+        @media (max-width: 1199px) {
+          .container-grid .left-panel .po-like span {
+            font-size: 15px; } }
       .container-grid .left-panel .po-like .enemies-count {
         margin-left: 40%; }
         .container-grid .left-panel .po-like .enemies-count img {

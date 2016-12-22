@@ -39,6 +39,9 @@ header {
   padding-left: 15%;
   .left-panel {
     height: 390px;
+    @media(max-width: 1199px) {
+      height: 420px;
+    }
     background-color: #fff;
       .soap {
         cursor: pointer;
@@ -62,16 +65,16 @@ header {
     }
     .poo-div {
       text-align: center;
-      width: 100px;
+      width: 62%;
       position: absolute;
     /*  top: 60px;
       left: 38px;*/
-      left: 38px;
-      bottom: 230px;
+      left: 45px;
+      bottom: 207px;
       z-index: 10;
-      opacity :0.1;
-      background-color: #f0ad4e;
-      max-height: 100px;
+      opacity :0.4;
+      background: url(../common/img/background.png) repeat-y 100% 0;
+      max-height: 123px;
     }
     .po-like {
       margin-top: 150px;
@@ -90,6 +93,9 @@ header {
       span {
         font-size: 18px;
         margin-left: 3px;
+        @media(max-width: 1199px) {
+          font-size: 15px;
+        }
       }
       .enemies-count {
         img {
