@@ -61,9 +61,12 @@ header {
         font-size: 16px;
       }
       .enemies-count {
-        margin-left: 50%;
+        img {
+          width: 39%;
+        }
+        margin-left: 40%;
         @media(min-width: 768px) and (max-width: 991px) {
-          margin-left: 44%;
+          margin-left: 35%;
         }
         @media(max-width: 767px){
           margin-left: 33%;
@@ -136,6 +139,12 @@ header {
     .posts-text {
       word-break: break-all;
       margin-top: 10px;
+      width: 74%;
+      height: 100px;
+      overflow: hidden;
+      padding-top: 10px;
+      padding-left: 25px;
+      border: none;
     }
     .po-like-posts {
       text-align:right;
@@ -145,10 +154,18 @@ header {
     }
   }
     .new-posts {
+      .flex-group {
+        display: flex;
+        .avatar-group {
+          width: 30%;
+        }
+      }
+      word-break: break-all;
      margin-left: 28.5%;
       height: auto;
       img {
-        width: 15%;
+        width: 70%;
+        margin-top: 10px;
       }
     }
 }
