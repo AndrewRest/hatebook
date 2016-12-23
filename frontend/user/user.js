@@ -1,5 +1,5 @@
 'use strict';
-hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location', 'notify',  function($scope, $rootScope,userService, $location, notify) {
     $scope.currentUser = $rootScope.anotherUserInfo;
     $scope.isMyPage = false;
 
@@ -35,6 +35,8 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
                 $scope.currentUser.pooCount += 1;
                 $scope.loggedInUser.pooCredits -= 1;
             })
+        } else {
+            notify({ message:'You dont have poo credits!', templateUrl:'bower_components/angular-notify/angular-notify.html', position: 'right', duration: 3000} );
         }
     };
 
