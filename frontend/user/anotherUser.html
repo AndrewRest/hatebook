@@ -19,7 +19,7 @@
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{usrInfo.username || usrInfo.email || 'Your name'}}</h4></div>
         <div class="poo-div poo-div-another" ng-style="{height:hgt+'px'}"></div>
-        <div class="avatar"><img width='80%' ng-src="{{usrInfo.avatar}}"/></div>
+        <div class="avatar"><img width='80%' height='100px' ng-src="{{usrInfo.avatar}}"/></div>
         <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png" ng-hide="!isEnemy"/><img src="../common/img/Poomoji.png" ng-show="!isEnemy"/></a><span class="po">{{usrInfo.pooCount || 0}}</span>
             <span class="enemies-count"><img
                     src="../common/img/default-user-avatar.png"/><span>{{hatersCount || 0}}</span></span></div>
