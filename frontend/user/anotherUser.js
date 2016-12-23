@@ -1,6 +1,6 @@
 
 'use strict';
-hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$location', 'notify',  function($scope, $rootScope,userService, $location, notify) {
     $scope.userID = $rootScope.userId;
     $scope.isMe = false;
     $scope.isEnemy = false;
@@ -9,12 +9,14 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
         userService.getOtherPage($scope.userID).then(function(data){
         $scope.usrInfo = data.data;
             $scope.hgt =  $scope.usrInfo .pooCount*0.5;
-            $scope.yourInfo.enemies.forEach(function(enemy){
-                if($scope.userID == enemy){
-                    $scope.isEnemy = true;
-                    $scope.notEnemy = false;
-                }
-            });
+            if($scope.yourInfo.enemies){
+                $scope.yourInfo.enemies.forEach(function(enemy){
+                    if($scope.userID == enemy){
+                        $scope.isEnemy = true;
+                        $scope.notEnemy = false;
+                    }
+                });
+            }
             $scope.getPosts();
             console.log('else',$scope.usrInfo );
         }, function(err){
@@ -40,13 +42,15 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
         });
     };
     $scope.addPoo = function() {
-        if($scope.usrInfo.pooCredits > 0){
-            $scope.hgt += 10;
+        if($scope.yourInfo.pooCredits > 0){
+            $scope.hgt += 0.5;
             console.log($scope.height);
             userService.addPoo({userId:$scope.userID}).then(function () {
                 $scope.usrInfo.pooCount += 1;
-                $scope.usrInfo.pooCredits -= 1;
+                $scope.yourInfo.pooCredits -= 1;
             })
+        } else {
+            notify({ message:'You dont have poo credits!', templateUrl:'bower_components/angular-notify/angular-notify.html', position: 'right', duration: 3000, classes:'custom-notification'} );
         }
     };
 

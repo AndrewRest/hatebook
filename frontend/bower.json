@@ -29,7 +29,8 @@
     "bootstrap": "^3.3.7",
     "angular-chart.js": "^1.0.1",
     "ngMeta": "^1.0.0",
-    "mark.js": "^8.4.0"
+    "mark.js": "^8.4.0",
+    "angular-notify": "^2.5.0"
   },
   "devDependencies": {
     "angular-translate": "~2.11.0"
