@@ -4,6 +4,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.isMyPage = false;
 
+    
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function (data) {
             $scope.loggedInUser = data.data;
