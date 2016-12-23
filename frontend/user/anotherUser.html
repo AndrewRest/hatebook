@@ -1,7 +1,7 @@
 <header class='header'>
     <img class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2' width="200px"  src="../common/img/oie_transparent.png" />
     <span class="right-header col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-2">
-        <img ng-src="{{yourInfo.avatar}}" ng-click="getUserPage()"/>
+        <img class='avatar-header' ng-src="{{yourInfo.avatar}}" ng-click="getUserPage()"/>
         <span class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Settings
@@ -18,7 +18,7 @@
 <div class="container-grid" ng-init="getUsrInfo()">
     <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <div class="name"><h4>{{usrInfo.username || usrInfo.email || 'Your name'}}</h4></div>
-        <div class="poo-div" ng-style="{height:hgt+'px'}"></div>
+        <div class="poo-div poo-div-another" ng-style="{height:hgt+'px'}"></div>
         <div class="avatar"><img width='80%' ng-src="{{usrInfo.avatar}}"/></div>
         <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png" ng-hide="!isEnemy"/><img src="../common/img/Poomoji.png" ng-show="!isEnemy"/></a><span class="po">{{usrInfo.pooCount || 0}}</span>
             <span class="enemies-count"><img

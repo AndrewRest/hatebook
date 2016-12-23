@@ -8,6 +8,7 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
     $scope.getUsrInfo = function(){
         userService.getOtherPage($scope.userID).then(function(data){
         $scope.usrInfo = data.data;
+            $scope.hgt =  $scope.usrInfo .pooCount*0.5;
             $scope.yourInfo.enemies.forEach(function(enemy){
                 if($scope.userID == enemy){
                     $scope.isEnemy = true;
