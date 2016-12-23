@@ -1,4 +1,4 @@
-hateBook.controller('enemiesList',['$scope','$rootScope','userService','$location', function($scope, $rootScope, userService, $location){
+hateBook.controller('enemiesList',['$scope','$rootScope','userService','$location','notify', function($scope, $rootScope, userService, $location, notify){
 
     $scope.enemies = [];
     userService.getEnemies().then(function (data) {
@@ -47,6 +47,8 @@ hateBook.controller('enemiesList',['$scope','$rootScope','userService','$locatio
             }, function (err) {
                 console.log(err)
             });
+        } else {
+            notify({ message:'You dont have poo credits!', templateUrl:'bower_components/angular-notify/angular-notify.html', position: 'right', duration: 3000} );
         }
     };
     $scope.logout = function(){

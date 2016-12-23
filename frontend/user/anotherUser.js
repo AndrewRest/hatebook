@@ -18,6 +18,9 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
                 });
             }
             $scope.getPosts();
+            userService.getHatersCount($scope.usrInfo._id).then(function (result) {
+                $scope.hatersCount = result.data.haters;
+            });
             console.log('else',$scope.usrInfo );
         }, function(err){
             console.log(err);
