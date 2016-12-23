@@ -1,7 +1,6 @@
 'use strict';
-hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
-
-
+hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location', 'notify',  function($scope, $rootScope,userService, $location, notify) {
+    $scope.currentUser = $rootScope.anotherUserInfo;
     $scope.isMyPage = false;
 
 
@@ -48,11 +47,7 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.cleanPoo = function () {
         $location.path('/clean');
     };
-    $scope.backToYourPage = function(){
-        $scope.getCurrentUserInfo();
-        $location.path('/user');
-    };
-
+    
     $scope.buyPoo = function () {
         $location.path('/buy');
     };
