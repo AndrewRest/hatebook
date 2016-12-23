@@ -6,7 +6,9 @@ hateBook.controller('paymentCtrl', ['$scope', '$rootScope', 'userService', 'paym
             $scope.userPooCount = $scope.currentUser.pooCount;
         });
     };
-
+    $scope.getUserPage = function(){
+        $location.path('/user')
+    };
     $scope.pooToClean = 0;
     $scope.pooToBuy = 0;
     $scope.paymentForm = false;

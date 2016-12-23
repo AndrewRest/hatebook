@@ -8,6 +8,15 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
         console.log(err);
     });
 
+    userService.getUser().then(function (result) {
+        $scope.loggedInUser = result.data;
+    }, function (err) {
+        if (err.status == 401) {
+            $location.path('/login');
+        }
+        console.log(err);
+    });
+
     $scope.backToYourPage = function(){
         $location.path('/user');
     };
