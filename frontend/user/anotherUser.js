@@ -1,40 +1,51 @@
-'use strict';
-hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location', 'notify',  function($scope, $rootScope,userService, $location, notify) {
-    $scope.currentUser = $rootScope.anotherUserInfo;
-    $scope.isMyPage = false;
 
+'use strict';
+hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
+    $scope.userID = $rootScope.userId;
+    $scope.isMe = false;
+    $scope.isEnemy = false;
+    $scope.notEnemy = true;
+    $scope.getUsrInfo = function(){
+        userService.getOtherPage($scope.userID).then(function(data){
+        $scope.usrInfo = data.data;
+            $scope.hgt =  $scope.usrInfo .pooCount*0.5;
+            $scope.yourInfo.enemies.forEach(function(enemy){
+                if($scope.userID == enemy){
+                    $scope.isEnemy = true;
+                    $scope.notEnemy = false;
+                }
+            });
+            $scope.getPosts();
+            console.log('else',$scope.usrInfo );
+        }, function(err){
+            console.log(err);
+            $location.path('/login');
+        })
+    };
+    $scope.getUserPage = function(){
+        $location.path('/user');
+    };
     $scope.getCurrentUserInfo = function () {
         userService.getUser().then(function (data) {
-            $scope.loggedInUser = data.data;
-            $scope.hgt = $scope.loggedInUser.pooCount*0.5;
-            if (!$scope.currentUser) {
-                $scope.currentUser = $scope.loggedInUser;
-                $scope.isMyPage = true;
-            } else {
-                $scope.hgt = $scope.currentUser.pooCount*0.5;
-                console.log($scope.currentUser.pooCount);
-            }
-            $scope.getPosts();
-            userService.getHatersCount($scope.currentUser._id).then(function (result) {
-                $scope.hatersCount = result.data.haters;
-            });
+            $scope.yourInfo = data.data;
         }, function (err) {
             $location.path('/login');
             console.log(err);
         });
     };
+    $scope.getCurrentUserInfo();
     $scope.getPosts = function () {
-        userService.getPosts($scope.currentUser._id).then(function(data) {
+        userService.getPosts($scope.userID).then(function(data) {
             $scope.userPosts = data.data;
         });
     };
     $scope.addPoo = function() {
-        if($scope.loggedInUser.pooCredits > 0){
-            $scope.hgt += 0.5;
+        if($scope.usrInfo.pooCredits > 0){
+            $scope.hgt += 10;
             console.log($scope.height);
-            userService.addPoo({userId:$scope.currentUser._id}).then(function () {
-                $scope.currentUser.pooCount += 1;
-                $scope.loggedInUser.pooCredits -= 1;
+            userService.addPoo({userId:$scope.userID}).then(function () {
+                $scope.usrInfo.pooCount += 1;
+                $scope.usrInfo.pooCredits -= 1;
             })
         }
     };
@@ -46,7 +57,11 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.cleanPoo = function () {
         $location.path('/clean');
     };
-    
+    $scope.backToYourPage = function(){
+        $scope.getCurrentUserInfo();
+        $location.path('/user');
+    };
+
     $scope.buyPoo = function () {
         $location.path('/buy');
     };
@@ -54,10 +69,9 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
     $scope.createNewPost = function (content) {
         if (content) {
             userService.createPost({
-                authorName: $scope.loggedInUser.username,
+                authorName: $scope.usrInfo.username,
                 content: content,
-                userId: $scope.currentUser._id,
-                authorAvatar: $scope.loggedInUser.avatar
+                userId: $scope.userID
             }).then(function (data) {
                 console.log(data.data);
                 $scope.newPostOnFocus = false;
@@ -90,7 +104,9 @@ hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$locatio
 
     $scope.makeEnemy = function (enemy) {
         userService.addEnemy(enemy._id).then(function(){
-            $scope.currentUser.enemy = true;
+            $scope.usrInfo.enemy = true;
+            $scope.isEnemy = true;
+            $scope.notEnemy = false;
         }, function(err){
             console.log(err)
         });

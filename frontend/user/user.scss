@@ -12,6 +12,9 @@ header {
     }
   }
   .right-header {
+    .avatar-header {
+      cursor: pointer;
+    }
     text-align: right;
     img {
         width: 6%;
@@ -72,9 +75,12 @@ header {
       left: 45px;
       bottom: 207px;
       z-index: 10;
-      opacity :0.4;
+      opacity :0.6;
       background: url(../common/img/background.png) repeat-y 100% 0;
-      max-height: 123px;
+      max-height: 100px;
+    }
+    .poo-div-another {
+      bottom: 230px;
     }
     .po-like {
       margin-top: 150px;

@@ -7,6 +7,19 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
     }
         console.log(err);
     });
+    userService.getUser().then(function (result) {
+        $scope.loggedInUser = result.data;
+    }, function (err) {
+        if (err.status == 401) {
+            $location.path('/login');
+        }
+        console.log(err);
+    });
+
+
+    $scope.backToYourPage = function(){
+        $location.path('/user');
+    };
 
     $scope.toEdit = function() {
         $location.path('/edit');
@@ -30,9 +43,9 @@ hateBook.controller('notEnamiesController',['$scope','userService','$location', 
 
     $scope.goToUserPage = function(user){
         userService.getOtherPage(user._id).then(function(data){
-                $rootScope.anotherUserInfo = data.data;
+            $rootScope.userId = data.data._id;
                 console.log(data);
-                $location.path('/user');
+            $location.path('/another-user');
             }, function(err){
                 console.log(err)
             }

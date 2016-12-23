@@ -1,0 +1,126 @@
+<header class='header'>
+    <img class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2' width="200px"  src="../common/img/oie_transparent.png" />
+    <span class="right-header col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-2">
+        <img class='avatar-header' ng-src="{{yourInfo.avatar}}" ng-click="getUserPage()"/>
+        <span class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Settings
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a ng-click="toEdit();">Edit profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="logout()">Logout</a></li>
+            </ul>
+        </span>
+    </span>
+</header>
+<div class="container-grid" ng-init="getUsrInfo()">
+    <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
+        <div class="name"><h4>{{usrInfo.username || usrInfo.email || 'Your name'}}</h4></div>
+        <div class="poo-div poo-div-another" ng-style="{height:hgt+'px'}"></div>
+        <div class="avatar"><img width='80%' height='100px' ng-src="{{usrInfo.avatar}}"/></div>
+        <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png" ng-hide="!isEnemy"/><img src="../common/img/Poomoji.png" ng-show="!isEnemy"/></a><span class="po">{{usrInfo.pooCount || 0}}</span>
+            <span class="enemies-count"><img
+                    src="../common/img/default-user-avatar.png"/><span>{{hatersCount || 0}}</span></span></div>
+        <div class="enemies-list" ng-click="toEnemiesPg()" ng-show="isMe "><a href="/#/enemies-list">My enemies: {{usrInfo.enemies.length || 0}}</a></div>
+        <div class="not-enemies-list" ng-click="toNotEnemiesPg()" ng-show="isMe"><a href="/#/not-enemies">Not Enemies</a></div>
+        <div class="not-enemies-list" ng-hide="isEnemy " ng-click="makeEnemy(usrInfo)"><a>Add to Enemies</a></div>
+        <div class="your-enemy" ng-show="isEnemy">Your enemy</div>
+        <div class="not-enemies-list" ng-click="buyPoo()" ng-show="isMe"><a>My credits:</a>{{usrInfo.pooCredits || 0}}</div>
+    </div>
+    <div class="right-panel col-lg-6 col-md-7 col-sm-7 col-xs-7">
+        <div class="user-info"><h4>User Info</h4>
+            <div class="hate-movies" ng-show="usrInfo.hateMovies"><h5>Hate-movies:</h5>{{usrInfo.hateMovies}}
+            </div>
+            <div class="hate-books" ng-show="usrInfo.hateBooks"><h5>Hate-books:</h5>{{usrInfo.hateBooks}}</div>
+            <div class="hates" ng-show="usrInfo.iHate"><h5>I hate:</h5>{{usrInfo.iHate}}</div>
+        </div>
+    </div>
+    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-class="{'new-post-onfocus' : newPostOnFocus}">
+        <textarea ng-model="newPostContent" placeholder="New post" ng-class="{'new-post-textarea-onfocus' : newPostOnFocus}" ng-focus="newPostOnFocus = true"></textarea>
+        <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
+    </div>
+    <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts track by $index">
+        <div class="flex-group">
+            <div class="avatar-group"><img ng-src={{post.authorAvatar}} />
+                <div>{{post.authorName || 'some name'}}</div></div>
+            <textarea class="posts-text">{{post.content}}</textarea>
+        </div>
+        <div class="po-like-posts" ng-click="likePost(post)"><a href=""><img src="../common/img/poo-icon.png"/></a><span>{{post.pooCount || 0}}</span></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<header class='header'>
+    <img class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2' width="200px"  src="../common/img/oie_transparent.png" />
+    <span class="right-header col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-2">
+        <img ng-src="{{yourInfo.avatar}}" ng-click="getUserPage()"/>
+        <span class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Settings
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a ng-click="toEdit();">Edit profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="logout()">Logout</a></li>
+            </ul>
+        </span>
+    </span>
+</header>
+<div class="container-grid" ng-init="getUsrInfo()">
+    <div class='left-panel col-lg-3 col-md-3 col-sm-3 col-xs-3'>
+        <div class="name"><h4>{{usrInfo.username || usrInfo.email || 'Your name'}}</h4></div>
+        <div class="poo-div" ng-style="{height:hgt+'px'}"></div>
+        <div class="avatar"><img width='80%' ng-src="{{usrInfo.avatar}}"/></div>
+        <div class="po-like"><a><img ng-click='addPoo();' src="../common/img/Poomoji.png" ng-hide="!isEnemy"/><img src="../common/img/Poomoji.png" ng-show="!isEnemy"/></a><span class="po">{{usrInfo.pooCount || 0}}</span>
+            <span class="enemies-count"><img
+                    src="../common/img/default-user-avatar.png"/><span>{{hatersCount || 0}}</span></span></div>
+        <div class="enemies-list" ng-click="toEnemiesPg()" ng-show="!notEnemy || !isEnemy "><a href="/#/enemies-list">My enemies: {{usrInfo.enemies.length || 0}}</a></div>
+        <div class="not-enemies-list" ng-click="toNotEnemiesPg()" ng-show="!isEnemy || notEnemy"><a href="/#/not-enemies">Not Enemies</a></div>
+        <div class="not-enemies-list" ng-hide="isEnemy " ng-click="makeEnemy(usrInfo)"><a>Add to Enemies</a></div>
+        <div class="your-enemy" ng-show="isEnemy">Your enemy</div>
+        <div class="not-enemies-list" ng-click="buyPoo()" ng-show="!isEnemy || !notEnemy"><a>My credits:</a>{{usrInfo.pooCredits || 0}}</div>
+    </div>
+    <div class="right-panel col-lg-6 col-md-7 col-sm-7 col-xs-7">
+        <div class="user-info"><h4>User Info</h4>
+            <div class="hate-movies" ng-show="usrInfo.hateMovies"><h5>Hate-movies:</h5>{{usrInfo.hateMovies}}
+            </div>
+            <div class="hate-books" ng-show="usrInfo.hateBooks"><h5>Hate-books:</h5>{{usrInfo.hateBooks}}</div>
+            <div class="hates" ng-show="usrInfo.iHate"><h5>I hate:</h5>{{usrInfo.iHate}}</div>
+        </div>
+    </div>
+    <div class="posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-class="{'new-post-onfocus' : newPostOnFocus}">
+        <textarea ng-model="newPostContent" placeholder="New post" ng-class="{'new-post-textarea-onfocus' : newPostOnFocus}" ng-focus="newPostOnFocus = true"></textarea>
+        <button class="btn btn-default btn-lg btn-md btn-sm btn-xs" ng-click="createNewPost(newPostContent)">POST</button>
+    </div>
+    <div class="new-posts col-lg-6 col-md-7 col-sm-7 col-xs-7" ng-repeat="post in userPosts track by $index">
+        <div class="flex-group">
+            <div class="avatar-group"><img ng-src={{post.authorAvatar}} />
+                <div>{{post.authorName || 'some name'}}</div></div>
+            <textarea class="posts-text">{{post.content}}</textarea>
+        </div>
+        <div class="po-like-posts" ng-click="likePost(post)"><a href=""><img src="../common/img/poo-icon.png"/></a><span>{{post.pooCount || 0}}</span></div>
+    </div>
+</div>
+-->

@@ -21,7 +21,7 @@ var authentication = require('./backend/lib/authentication');
 var db = require('./backend/lib/mongodb_settings');
 
 var app = express();
-app.set('port', 1313);
+app.set('port', process.env.PORT || 1313);
 
 var sessionConfig = {
     secret: 'hatebook cat',
