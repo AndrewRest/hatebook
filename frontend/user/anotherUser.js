@@ -2,13 +2,16 @@
 'use strict';
 hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$location',  function($scope, $rootScope,userService, $location) {
     $scope.userID = $rootScope.userId;
+    $scope.isMe = false;
     $scope.isEnemy = false;
+    $scope.notEnemy = true;
     $scope.getUsrInfo = function(){
         userService.getOtherPage($scope.userID).then(function(data){
         $scope.usrInfo = data.data;
             $scope.yourInfo.enemies.forEach(function(enemy){
                 if($scope.userID == enemy){
                     $scope.isEnemy = true;
+                    $scope.notEnemy = false;
                 }
             });
             $scope.getPosts();
@@ -101,6 +104,8 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
     $scope.makeEnemy = function (enemy) {
         userService.addEnemy(enemy._id).then(function(){
             $scope.usrInfo.enemy = true;
+            $scope.isEnemy = true;
+            $scope.notEnemy = false;
         }, function(err){
             console.log(err)
         });
