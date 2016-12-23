@@ -1,6 +1,6 @@
 'use strict';
 hateBook.controller('userCtrl', ['$scope', '$rootScope','userService', '$location', 'notify',  function($scope, $rootScope,userService, $location, notify) {
-    $scope.currentUser = $rootScope.anotherUserInfo;
+   
     $scope.isMyPage = false;
 
 
