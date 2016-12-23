@@ -50,7 +50,7 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
                 $scope.yourInfo.pooCredits -= 1;
             })
         } else {
-            notify({ message:'You dont have poo credits!', templateUrl:'bower_components/angular-notify/angular-notify.html', position: 'right', duration: 3000, classes:'custom-notification'} );
+            notify({ message:'You dont have poo credits!', templateUrl:'bower_components/angular-notify/angular-notify.html', position: 'right', duration: 3000} );
         }
     };
 
@@ -73,9 +73,10 @@ hateBook.controller('anotherUser', ['$scope', '$rootScope','userService', '$loca
     $scope.createNewPost = function (content) {
         if (content) {
             userService.createPost({
-                authorName: $scope.usrInfo.username,
+                authorName: $scope.yourInfo.username,
                 content: content,
-                userId: $scope.userID
+                userId: $scope.userID,
+                authorAvatar: $scope.yourInfo.avatar
             }).then(function (data) {
                 console.log(data.data);
                 $scope.newPostOnFocus = false;
